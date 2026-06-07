@@ -1,0 +1,30 @@
+<!-- transition: slide-horizontal, layout: slide-layout-code -->
+<div class="code-header">
+    <span class="section-label">Optimization Alternative</span>
+    <h2>On-Demand Agent Skills</h2>
+    <p>Extend agent capabilities with lightweight JavaScript functions. You only load and execute them when required, bypassing the continuous schema overhead of persistent MCP servers.</p>
+</div>
+<div class="code-container glass-panel">
+    <div class="code-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="file-name">terminal - workspace shell</span>
+    </div>
+    <pre><code><span class="html-attr">$</span> <span class="html-tag">/gh-answer-pr-comments 2137</span>
+
+<span class="html-str">➜ Step 1: Reading PR Comments</span>
+  Found comment on src/auth.js #L34: "Can we optimize this search to O(1)?"
+
+<span class="html-str">➜ Step 2: Proposing Code Improvements</span>
+  Replacing Array.find() with Map lookup.
+  Diff proposed: + const tokenMap = new Map(tokens.map(t => [t.id, t]));
+
+<span class="html-str">➜ Step 3: Replying to Comment</span>
+  Posted: "Refactored the linear search to a Map lookup for O(1) performance in commit a3b8f1."
+
+<span class="html-tag">✔ Analysis complete. All comments resolved.</span></code></pre>
+</div>
+<div class="notes">
+    Explain how on-demand skills (like those defined on agentskills.io) can be triggered with a direct workspace slash command, running the full analysis (fetch, code review, git commit, PR update) without needing a heavy, persistent server schema.
+</div>

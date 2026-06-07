@@ -1,0 +1,61 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">Visualizing Token Accumulation</span>
+    <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Context Inflation: <span class="gradient-text">How Costs Accumulate</span></h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: center;">
+        <!-- Left Column: Explanation -->
+        <div>
+            <p style="margin-bottom: 1.5rem; font-size: 1.2rem; line-height: 1.6;">In classic chat, you pay for a single context exchange. In agentic runs, you pay for <strong>every loop iteration</strong> containing the sum of all previous context, steps, and tool logs.</p>
+            <div class="glass-panel" style="padding: 1.5rem; border-left: 4px solid var(--accent-color);">
+                <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-color);">The Accumulation Formula</h4>
+                <code style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--accent-color); display: block;">
+                    Total = Sum(Context + History + Log<sub>i</sub>)
+                </code>
+            </div>
+        </div>
+
+        <!-- Right Column: Visual Diagram Stack -->
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <!-- Iteration 1 -->
+            <div class="glass-panel" style="padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-color: rgba(99, 102, 241, 0.2); background: rgba(99, 102, 241, 0.05);">
+                <span style="font-weight: 600; font-size: 0.95rem; font-family: var(--font-mono);">Loop 1: Initial Context</span>
+                <span style="background: var(--accent-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">11,000 Tokens</span>
+            </div>
+            
+            <!-- Arrow -->
+            <div style="text-align: center; color: var(--accent-color); font-size: 1.2rem; line-height: 1; margin: -0.5rem 0;">⬇️</div>
+
+            <!-- Iteration 2 -->
+            <div class="glass-panel" style="padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.1);">
+                <span style="font-weight: 600; font-size: 0.95rem; font-family: var(--font-mono);">Loop 2: Context + Step 1 Logs</span>
+                <span style="background: var(--accent-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">12,000 Tokens</span>
+            </div>
+
+            <!-- Arrow -->
+            <div style="text-align: center; color: var(--accent-color); font-size: 1.2rem; line-height: 1; margin: -0.5rem 0;">⬇️</div>
+
+            <!-- Iteration 3 -->
+            <div class="glass-panel" style="padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-color: rgba(99, 102, 241, 0.6); background: rgba(99, 102, 241, 0.15);">
+                <span style="font-weight: 600; font-size: 0.95rem; font-family: var(--font-mono);">Loop 3: Context + History + Step 2 Logs</span>
+                <span style="background: var(--accent-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">13,500 Tokens</span>
+            </div>
+
+            <!-- Arrow -->
+            <div style="text-align: center; color: var(--accent-color); font-size: 1.2rem; line-height: 1; margin: -0.5rem 0;">⬇️</div>
+
+            <!-- Iteration 10 -->
+            <div class="glass-panel" style="padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--code-keyword); background: rgba(244, 63, 94, 0.15); box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);">
+                <span style="font-weight: 600; font-size: 0.95rem; font-family: var(--font-mono); color: var(--code-keyword);">Loop 10: Full History + Accumulated Logs</span>
+                <span style="background: var(--code-keyword); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">20,000 Tokens</span>
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; font-weight: 800; font-size: 1.25rem; margin-top: 0.5rem; color: var(--accent-color);">
+                Total Billed: ~155,000 Tokens
+            </div>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Explain that this diagram visualizes context compounding. At Loop 10, the developer is paying for Loop 1, 2, 3... all the way to 10 combined, because LLMs are stateless and every action requires sending the full history back.
+</div>

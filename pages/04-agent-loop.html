@@ -1,0 +1,21 @@
+<!-- transition: slide-vertical, layout: slide-layout-split -->
+<div class="column-left">
+    <span class="section-label">Deep Dive</span>
+    <h2>The ReAct Loop <span class="gradient-text">Multiplier</span></h2>
+    <p class="desc-text">Why does Agent Mode consume so many tokens? The answer lies in how prompts are dynamically constructed behind the scenes.</p>
+</div>
+<div class="column-right">
+    <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+        <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
+            <h3>🔁 Repeated Context Processing</h3>
+            <p>In each subsequent loop iteration, the model must reread the entire context: the original task, the history of previous steps, and the logs of completed operations.</p>
+        </div>
+        <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
+            <h3>📂 Multidirectional "Puffing"</h3>
+            <p>The agent independently decides whether to include new data. It can read up to 5 additional source files without the user's knowledge if deemed necessary.</p>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Explain context accumulation and "puffing". This is why a simple one-line prompt to an agent can turn into a 100k token execution if it starts reading multiple files and logs in a loop.
+</div>

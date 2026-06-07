@@ -1,0 +1,27 @@
+<!-- transition: slide-horizontal, layout: slide-layout-split -->
+<div class="column-left">
+    <span class="section-label">GitHub Copilot</span>
+    <h2>Base Prompt <span class="gradient-text">Overheads</span></h2>
+    <p class="desc-text">Every transaction carries an immutable system payload of **~10,000 tokens** (system rules, boundaries) that cannot be skipped. The baseline overhead then scales based on the active mode:</p>
+</div>
+<div class="column-right">
+    <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+        <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.05);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <h3 style="font-size: 1.25rem;">💬 Ask Mode</h3>
+                <span style="font-family: var(--font-mono); color: var(--accent-color); font-weight: 800;">~13,000 Tokens</span>
+            </div>
+            <p style="font-size: 0.95rem;">Base instructions + UI state + workspace indices loaded out-of-the-box.</p>
+        </div>
+        <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--code-keyword); background: rgba(244, 63, 94, 0.05);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <h3 style="font-size: 1.25rem; color: var(--code-keyword);">🤖 Agent Mode</h3>
+                <span style="font-family: var(--font-mono); color: var(--code-keyword); font-weight: 800;">~18,000 Tokens</span>
+            </div>
+            <p style="font-size: 0.95rem;">Ask Mode baseline + tool definitions + ReAct loop instructions (without MCPs).</p>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Explain that the 10k token system instructions are the core foundation. Moving from Ask to Agent mode adds another 5k tokens of planner and tool schemas, creating a raw 18k token starting point before any files are read.
+</div>

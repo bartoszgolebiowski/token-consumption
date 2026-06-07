@@ -426,6 +426,7 @@ pre {
 .html-tag { color: var(--code-tag); }
 .html-attr { color: var(--code-attr); }
 .html-str { color: var(--code-string); }
+.html-keyword { color: var(--code-keyword); }
 pre code {
     color: var(--text-color);
 }
