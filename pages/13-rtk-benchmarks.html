@@ -1,0 +1,55 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">Performance & Benchmarks</span>
+    <h2 style="font-size: 2.8rem; margin-bottom: 0.5rem;">RTK Token Savings <span class="gradient-text">Statistics</span></h2>
+    <p style="margin-bottom: 2rem;">Benchmarked across 2,900+ real-world developer commands with an average of <strong>89% noise reduction</strong>.</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="glass-panel" style="padding: 1.5rem;">
+                <h3 style="font-size: 3rem; color: var(--accent-color); font-weight: 800; line-height: 1; margin-bottom: 0.5rem;">89%</h3>
+                <p style="font-size: 1rem; color: var(--text-muted);">Average Token Savings</p>
+            </div>
+            <div class="glass-panel" style="padding: 1.5rem;">
+                <h3 style="font-size: 3rem; color: var(--gradient-2); font-weight: 800; line-height: 1; margin-bottom: 0.5rem;">59.3k</h3>
+                <p style="font-size: 1rem; color: var(--text-muted);">GitHub Stars (MIT License)</p>
+            </div>
+        </div>
+        
+        <div class="glass-panel" style="overflow-x: auto; border-radius: var(--border-radius-md);">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 1rem; line-height: 1.4;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2);">
+                        <th style="padding: 1rem 1.25rem; font-weight: 800; font-family: var(--font-heading); color: var(--accent-color);">Command</th>
+                        <th style="padding: 1rem 1.25rem; font-weight: 800; font-family: var(--font-heading); text-align: right; color: var(--accent-color);">Token Reduction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--glass-border);">
+                        <td style="padding: 0.8rem 1.25rem; font-weight: 600;">pytest -v (Python)</td>
+                        <td style="padding: 0.8rem 1.25rem; text-align: right; color: var(--code-string); font-weight: 800;">-96.0%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.01);">
+                        <td style="padding: 0.8rem 1.25rem; font-weight: 600;">rtk read (File Reading)</td>
+                        <td style="padding: 0.8rem 1.25rem; text-align: right; color: var(--code-string); font-weight: 800;">-95.0%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border);">
+                        <td style="padding: 0.8rem 1.25rem; font-weight: 600;">git diff</td>
+                        <td style="padding: 0.8rem 1.25rem; text-align: right; color: var(--code-string); font-weight: 800;">-94.0%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.01);">
+                        <td style="padding: 0.8rem 1.25rem; font-weight: 600;">cargo test (Rust)</td>
+                        <td style="padding: 0.8rem 1.25rem; text-align: right; color: var(--code-string); font-weight: 800;">-91.8%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border);">
+                        <td style="padding: 0.8rem 1.25rem; font-weight: 600;">git log</td>
+                        <td style="padding: 0.8rem 1.25rem; text-align: right; color: var(--code-string); font-weight: 800;">-86.0%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Talk through the numbers: Point out that testing outputs are compressed by over 90% (e.g. pytest at 96% and cargo test at 91.8%) by stripping passing counts and retaining only failure logs. Highlight git diff (-94%) and the enormous community support (59.3k stars).
+</div>

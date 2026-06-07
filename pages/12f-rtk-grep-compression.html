@@ -1,0 +1,52 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">RTK in Action: Search</span>
+    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Grep Search Compression</h2>
+
+    <!-- Side-by-Side Comparison Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        
+        <!-- Left: Raw Result -->
+        <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
+            <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
+                <span class="dot red"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw grep -rn Output</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>src/cargo_cmd.rs:17:pub fn run(cmd: CargoCommand, ...) -&gt; Result&lt;()&gt;
+src/cargo_cmd.rs:551:pub fn run_passthrough(args: ...) -&gt; Result&lt;()&gt;
+src/cc_economics.rs:184:pub fn run(...)
+src/config.rs:73:    pub fn load() -&gt; Result&lt;Self&gt;
+src/config.rs:85:    pub fn save(&amp;self) -&gt; Result&lt;()&gt;
+src/config.rs:97:    pub fn create_default() -&gt; Result&lt;PathBuf&gt;</code></pre>
+        </div>
+
+        <!-- Right: RTK Result -->
+        <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
+            <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
+                <span class="dot green"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk grep Output</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>112 matches in 47 files:
+
+src/cargo_cmd.rs (3):
+    17: pub fn run(cmd: CargoCommand, ...) -&gt; Result&lt;()&gt;
+   551: pub fn run_passthrough(args: ...) -&gt; Result&lt;()&gt;
+
+src/config.rs (4):
+    73: pub fn load() -&gt; Result&lt;Self&gt;
+    85: pub fn save(&amp;self) -&gt; Result&lt;()&gt;</code></pre>
+        </div>
+
+    </div>
+
+    <!-- Bottom: Summary Banner -->
+    <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
+        <span style="font-size: 1.1rem; color: var(--text-muted);">RTK aggregates matches under file headers, eliminating repeating file paths on every result line.</span>
+        <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
+            Raw: 2,108 ➔ RTK: 940 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 1,168 tokens (55%)</span>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Demos grep: Standard grep repeats the full absolute path of the file on every single matched line. RTK groups matches under distinct file blocks to clean up the formatting.
+</div>

@@ -1,0 +1,61 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">RTK in Action: Files</span>
+    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">JS File Read Signature Compression</h2>
+
+    <!-- Side-by-Side Comparison Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        
+        <!-- Left: Raw Result -->
+        <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
+            <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
+                <span class="dot red"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw auth.js Code Read</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>import { db } from './db.js';
+
+export async function login(user, pass) {
+    const u = await db.getUser(user);
+    if (!u || u.password !== pass) {
+        throw new Error('Invalid login');
+    }
+    return generateToken(u);
+}
+
+export function verify(token) {
+    if (!token) return false;
+    try {
+        const payload = jwt.verify(token);
+        return payload.expiry > Date.now();
+    } catch {
+        return false;
+    }
+}</code></pre>
+        </div>
+
+        <!-- Right: RTK Result -->
+        <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
+            <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
+                <span class="dot green"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk read auth.js Output</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>// auth.js (Structural outline)
+import { db } from './db.js';
+
+export async function login(user, pass) { /* body stripped */ }
+export function verify(token) { /* body stripped */ }</code></pre>
+        </div>
+
+    </div>
+
+    <!-- Bottom: Summary Banner -->
+    <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
+        <span style="font-size: 1.1rem; color: var(--text-muted);">When exploring modular structure, RTK strips logic bodies and sends signatures only.</span>
+        <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
+            Raw: 4,200 ➔ RTK: 210 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 3,990 tokens (95%)</span>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Explain that if the agent only needs to locate function signatures and export contracts to understand how modules link, rtk read strips implementation details, saving 95% on tokens.
+</div>

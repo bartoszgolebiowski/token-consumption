@@ -1,0 +1,56 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">RTK in Action: Directory Discovery</span>
+    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Directory Listing (ls) Compression</h2>
+
+    <!-- Side-by-Side Comparison Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        
+        <!-- Left: Raw Result -->
+        <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
+            <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
+                <span class="dot red"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw ls -la src/</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>total 928
+drwxr-xr-x  41 patrick  staff   1312 .
+drwxr-xr-x  25 patrick  staff    800 ..
+-rw-r--r--   1 patrick  staff  16394 cargo_cmd.rs
+-rw-r--r--   1 patrick  staff  27220 cc_economics.rs
+-rw-r--r--   1 patrick  staff   9503 ccusage.rs
+-rw-r--r--   1 patrick  staff   2884 config.rs
+-rw-r--r--   1 patrick  staff  12886 container.rs
+-rw-r--r--   1 patrick  staff   3406 filter.rs</code></pre>
+        </div>
+
+        <!-- Right: RTK Result -->
+        <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
+            <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
+                <span class="dot green"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk ls src/ Output</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>discover/
+parser/
+cargo_cmd.rs  16.0K
+cc_economics.rs  26.6K
+ccusage.rs  9.3K
+config.rs  2.8K
+container.rs  12.6K
+filter.rs  11.9K
+
+37 files, 2 dirs (37 .rs)</code></pre>
+        </div>
+
+    </div>
+
+    <!-- Bottom: Summary Banner -->
+    <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
+        <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips file permissions, owners, groups, and creation timestamps, exporting only file names and sizes.</span>
+        <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
+            Raw: 3,200 ➔ RTK: 640 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 2,560 tokens (80%)</span>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Demos ls: Filesystem lists contain columns for permissions, link counts, owners, and dates. RTK ignores this data, keeping only file paths and sizes so the agent can quickly inspect modules.
+</div>

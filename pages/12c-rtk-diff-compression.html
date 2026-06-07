@@ -1,0 +1,52 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">RTK in Action: Git</span>
+    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">JS Git Diff Compression</h2>
+
+    <!-- Side-by-Side Comparison Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        
+        <!-- Left: Raw Result -->
+        <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
+            <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
+                <span class="dot red"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw git diff Output</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>diff --git a/src/auth.js b/src/auth.js
+index 45adcf2..2ba9c4b 100644
+--- a/src/auth.js
++++ b/src/auth.js
+@@ -12,5 +12,5 @@
+ export function verify(token) {
+-    const payload = jwt.verify(token);
++    const payload = jwt.verify(token, process.env.SECRET);
+     return payload.expiry > Date.now();
+ }</code></pre>
+        </div>
+
+        <!-- Right: RTK Result -->
+        <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
+            <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
+                <span class="dot green"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk git diff Output</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>diff --git a/src/auth.js b/src/auth.js
+-    const payload = jwt.verify(token);
++    const payload = jwt.verify(token, process.env.SECRET);
+
+[x412 lines of unmodified code collapsed]</code></pre>
+        </div>
+
+    </div>
+
+    <!-- Bottom: Summary Banner -->
+    <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
+        <span style="font-size: 1.1rem; color: var(--text-muted);">RTK collapses unchanged context blocks, index info, and metadata line headers.</span>
+        <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
+            Raw: 8,400 ➔ RTK: 504 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 7,896 tokens (94%)</span>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Explain diff compression: By stripping out surrounding context headers, git indexing logs, and collapsing large blocks of unchanged code, RTK isolates the exact modified lines to save 94% on diff payloads.
+</div>
