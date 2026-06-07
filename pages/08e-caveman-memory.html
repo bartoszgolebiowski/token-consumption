@@ -1,0 +1,69 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">Performance Metrics</span>
+    <h2 style="font-size: 2.8rem; margin-bottom: 0.5rem;">Claude API Benchmark <span class="gradient-text">Savings</span></h2>
+    <p style="margin-bottom: 2rem;">Real output token counts from the Claude API show an average of <strong>65% output reduction</strong>.</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: center;">
+        <!-- Left: Metrics Cards -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="glass-panel" style="padding: 1.5rem;">
+                <h3 style="font-size: 3rem; color: var(--accent-color); font-weight: 800; line-height: 1; margin-bottom: 0.5rem;">65%</h3>
+                <p style="font-size: 1rem; color: var(--text-muted);">Average Token Reduction</p>
+            </div>
+            <div class="glass-panel" style="padding: 1.5rem;">
+                <h3 style="font-size: 3rem; color: var(--gradient-2); font-weight: 800; line-height: 1; margin-bottom: 0.5rem;">~3x</h3>
+                <p style="font-size: 1rem; color: var(--text-muted);">Output Generation Speedup</p>
+            </div>
+        </div>
+        
+        <!-- Right: Benchmarks Table -->
+        <div class="glass-panel" style="overflow-x: auto; border-radius: var(--border-radius-md);">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; line-height: 1.4;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2);">
+                        <th style="padding: 0.75rem 1rem; font-weight: 800; font-family: var(--font-heading); color: var(--accent-color);">Benchmark Task</th>
+                        <th style="padding: 0.75rem 1rem; font-weight: 800; font-family: var(--font-heading); text-align: right; color: var(--accent-color);">Normal</th>
+                        <th style="padding: 0.75rem 1rem; font-weight: 800; font-family: var(--font-heading); text-align: right; color: var(--accent-color);">Caveman</th>
+                        <th style="padding: 0.75rem 1rem; font-weight: 800; font-family: var(--font-heading); text-align: right; color: var(--accent-color);">Saved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--glass-border);">
+                        <td style="padding: 0.6rem 1rem; font-weight: 600;">Explain React re-render bug</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-muted);">1180</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-color);">159</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--code-string); font-weight: 800;">-87%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.01);">
+                        <td style="padding: 0.6rem 1rem; font-weight: 600;">Fix auth middleware expiry</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-muted);">704</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-color);">121</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--code-string); font-weight: 800;">-83%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border);">
+                        <td style="padding: 0.6rem 1rem; font-weight: 600;">Set up PostgreSQL pool</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-muted);">2347</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-color);">380</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--code-string); font-weight: 800;">-84%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.01);">
+                        <td style="padding: 0.6rem 1rem; font-weight: 600;">Explain git rebase vs merge</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-muted);">702</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-color);">292</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--code-string); font-weight: 800;">-58%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--glass-border);">
+                        <td style="padding: 0.6rem 1rem; font-weight: 600;">Docker multi-stage build</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-muted);">1042</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--text-color);">290</td>
+                        <td style="padding: 0.6rem 1rem; text-align: right; color: var(--code-string); font-weight: 800;">-72%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Present the benchmark figures: Caveman demonstrates an average of 65% output reduction across standard prompts (ranging from 22% on refactorings to 87% on explanations).
+</div>
