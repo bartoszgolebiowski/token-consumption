@@ -71,12 +71,12 @@
                 <div class="showcase-card glass-panel hover-lift">
                     <div class="card-icon">💬</div>
                     <h3>Classic AI Chat</h3>
-                    <p><strong>Linear & Predictable:</strong> One-shot request-response. The system pauses and remains idle after responding. Costs grow directly based on manual inputs and printed output.</p>
+                    <p><strong>Linear & Predictable:</strong> One-shot request and response. Pauses and remains idle after responding. Costs grow based on manual inputs and output.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift">
                     <div class="card-icon">🔄</div>
                     <h3>GitHub Copilot (Agent Mode)</h3>
-                    <p><strong>Autonomous ReAct Loops:</strong> Reason-Act-Observe cycle. Works behind the scenes to execute plans, review logs, and run code, continuously rebuilding context.</p>
+                    <p><strong>Autonomous Loops:</strong> Reason-Act-Observe cycle. Runs in the background to execute plans, check logs, and run code, rebuilding context.</p>
                 </div>
             </div>
         </div>
@@ -94,17 +94,17 @@
         <div class="column-left">
             <span class="section-label">Deep Dive</span>
             <h2>The ReAct Loop <span class="gradient-text">Multiplier</span></h2>
-            <p class="desc-text">Why does Agent Mode consume so many tokens? The answer lies in how prompts are dynamically constructed behind the scenes.</p>
+            <p class="desc-text">Why does Agent Mode consume so many tokens? Because prompts are rebuilt in the background.</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
-                    <h3>🔁 Repeated Context Processing</h3>
-                    <p>In each subsequent loop iteration, the model must reread the entire context: the original task, the history of previous steps, and the logs of completed operations.</p>
+                    <h3>🔁 Repeated Context Reading</h3>
+                    <p>Every loop iteration forces the model to reread the entire context: the task, previous steps, and tool logs.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
-                    <h3>📂 Multidirectional "Puffing"</h3>
-                    <p>The agent independently decides whether to include new data. It can read up to 5 additional source files without the user's knowledge if deemed necessary.</p>
+                    <h3>📂 Independent File Reading</h3>
+                    <p>The agent can read up to 5 additional files without your knowledge to locate relevant information.</p>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: center;">
             <!-- Left Column: Explanation -->
             <div>
-                <p style="margin-bottom: 1.5rem; font-size: 1.2rem; line-height: 1.6;">In a standard AI chat interface, you interact in a single, distinct loop. You pay only once for the context you submit and the direct completion response.</p>
+                <p style="margin-bottom: 1.5rem; font-size: 1.2rem; line-height: 1.6;">In standard chat, you interact in a single exchange. You pay once for the context you send and the direct response.</p>
                 <div class="glass-panel" style="padding: 1.5rem; border-left: 4px solid var(--accent-color);">
                     <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-color);">The Chat Formula</h4>
                     <code style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--accent-color); display: block;">
@@ -167,7 +167,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: center;">
             <!-- Left Column: Explanation -->
             <div>
-                <p style="margin-bottom: 1.5rem; font-size: 1.2rem; line-height: 1.6;">In classic chat, you pay for a single context exchange. In agentic runs, you pay for <strong>every loop iteration</strong> containing the sum of all previous context, steps, and tool logs.</p>
+                <p style="margin-bottom: 1.5rem; font-size: 1.2rem; line-height: 1.6;">Classic chat is a single exchange. Agent runs charge you for every loop iteration, which contains the sum of all previous prompts, files, and tool logs.</p>
                 <div class="glass-panel" style="padding: 1.5rem; border-left: 4px solid var(--accent-color);">
                     <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-color);">The Accumulation Formula</h4>
                     <code style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--accent-color); display: block;">
@@ -230,7 +230,7 @@
         <div class="column-left">
             <span class="section-label">GitHub Copilot</span>
             <h2>Base Prompt <span class="gradient-text">Overheads</span></h2>
-            <p class="desc-text">Every transaction carries an immutable system payload of **~10,000 tokens** (system rules, boundaries) that cannot be skipped. The baseline overhead then scales based on the active mode:</p>
+            <p class="desc-text">Every request carries a fixed system payload of **~10,000 tokens** (system rules) that cannot be skipped. The baseline overhead scales based on the active mode:</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
@@ -239,14 +239,14 @@
                         <h3 style="font-size: 1.25rem;">💬 Ask Mode</h3>
                         <span style="font-family: var(--font-mono); color: var(--accent-color); font-weight: 800;">~13,000 Tokens</span>
                     </div>
-                    <p style="font-size: 0.95rem;">Base instructions + UI state + workspace indices loaded out-of-the-box.</p>
+                    <p style="font-size: 0.95rem;">Base instructions, UI state, and workspace indexes loaded automatically.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--code-keyword); background: rgba(244, 63, 94, 0.05);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
                         <h3 style="font-size: 1.25rem; color: var(--code-keyword);">🤖 Agent Mode</h3>
                         <span style="font-family: var(--font-mono); color: var(--code-keyword); font-weight: 800;">~18,000 Tokens</span>
                     </div>
-                    <p style="font-size: 0.95rem;">Ask Mode baseline + tool definitions + ReAct loop instructions (without MCPs).</p>
+                    <p style="font-size: 0.95rem;">Ask Mode baseline, tool definitions, and loop instructions.</p>
                 </div>
             </div>
         </div>
@@ -264,7 +264,7 @@
         <div class="column-left">
             <span class="section-label">Extensibility</span>
             <h2>Model Context Protocol <span class="gradient-text">Overhead</span></h2>
-            <p class="desc-text">Integrating Model Context Protocol (MCP) servers and IDE extensions adds an additional "brick" of tokens loaded into the starting context of every execution turn.</p>
+            <p class="desc-text">Adding Model Context Protocol (MCP) servers and IDE extensions injects extra tokens into every execution turn.</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
@@ -273,14 +273,14 @@
                         <h3 style="font-size: 1.25rem;">🤖 Copilot Agent Base</h3>
                         <span style="font-family: var(--font-mono); color: var(--accent-color); font-weight: 800;">18,000 Tokens</span>
                     </div>
-                    <p style="font-size: 0.95rem;">Out-of-the-box system prompt baseline for planning and execution boundaries.</p>
+                    <p style="font-size: 0.95rem;">Base system prompt for planning and boundaries.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--code-keyword); background: rgba(244, 63, 94, 0.05);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
                         <h3 style="font-size: 1.25rem; color: var(--code-keyword);">➕ Custom MCPs & Extensions</h3>
                         <span style="font-family: var(--font-mono); color: var(--code-keyword); font-weight: 800;">+0 to 10,000+ Tokens</span>
                     </div>
-                    <p style="font-size: 0.95rem;">Variable token schemas added by custom MCPs (like Jupyter) and active IDE extensions.</p>
+                    <p style="font-size: 0.95rem;">Token schemas added by custom MCP tools and active extensions.</p>
                 </div>
                 <div style="display: flex; justify-content: flex-end; font-weight: 800; font-size: 1.2rem; margin-top: 0.5rem; color: var(--accent-color); font-family: var(--font-mono);">
                     Total Start Cost: 18,000 to 28,000+ Tokens
@@ -301,7 +301,7 @@
         <div class="code-header">
             <span class="section-label">Optimization Alternative</span>
             <h2>On-Demand Agent Skills</h2>
-            <p>Extend agent capabilities with lightweight JavaScript functions. You only load and execute them when required, bypassing the continuous schema overhead of persistent MCP servers.</p>
+            <p>Add agent skills using lightweight JavaScript functions. They run only when needed, avoiding the continuous token cost of persistent MCP servers.</p>
         </div>
         <div class="code-container glass-panel">
             <div class="code-bar">
@@ -340,7 +340,7 @@
             <span class="badge">AI Mathematics</span>
         </div>
         <h1 class="main-title">Plan First,<br><span class="gradient-text">Code Second</span></h1>
-        <p class="subtitle">Why text-based planning is cheaper than coding on the fly, saving API budget and development latency.</p>
+        <p class="subtitle">Why text planning is cheaper than coding on the fly, saving API budget and waiting time.</p>
         <div class="title-footer">
             <span class="author">The Economics of Brevity</span>
             <span class="divider">•</span>
@@ -361,8 +361,8 @@
           <span class="section-label">Pitfalls</span>
           <h2>The Cost of <span class="gradient-text">"Coding on the Fly"</span></h2>
           <p class="desc-text">
-            Prompting an agent to write code immediately without a structure is a
-            developer's most expensive mistake, triggering compounding context loops.
+            Asking an agent to write code immediately without a plan is an
+            expensive mistake, triggering long feedback loops.
           </p>
         </div>
         <div class="column-right">
@@ -391,8 +391,7 @@
             >
               <h3>❄️ Context Snowball Effect</h3>
               <p style="font-size: 0.95rem">
-                Every iteration appends all previous prompts, files, and build logs to
-                the history. The cost grows exponentially.
+                Every step appends previous prompts, files, and build logs to the history, growing the cost.
               </p>
             </div>
           </div>
@@ -421,17 +420,17 @@
         <div class="column-left">
             <span class="section-label">Optimization Mechanics</span>
             <h2>The Plan <span class="gradient-text">Paradox</span></h2>
-            <p class="desc-text">It is significantly cheaper to pay once for a comprehensive text blueprint than to pay multiple times for code revisions.</p>
+            <p class="desc-text">Paying once for a text blueprint is cheaper than paying multiple times for code fixes.</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem;">
                     <h3>📉 The Planning Overhead</h3>
-                    <p style="font-size: 0.95rem;">Building a plan can still consume large token payloads if the model reads the entire repository context blindly at the start.</p>
+                    <p style="font-size: 0.95rem;">Drafting a plan can still be expensive if the model reads the entire repository at once.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05);">
                     <h3>⚡ Token-Optimized Planning</h3>
-                    <p style="font-size: 0.95rem;">By feeding only structured file signatures, summary indexes, and compressed rule guidelines, we keep the planning cost minimal.</p>
+                    <p style="font-size: 0.95rem;">By using file signatures and summary indexes, we keep planning costs low.</p>
                 </div>
             </div>
         </div>
@@ -449,17 +448,17 @@
         <div class="column-left">
             <span class="section-label">Context Management</span>
             <h2>Targeted <span class="gradient-text">Context Isolation</span></h2>
-            <p class="desc-text">A structured plan enables you to segment development steps, ensuring the agent only accesses files relevant to the active sub-task.</p>
+            <p class="desc-text">A plan lets you divide the task so the agent only reads files relevant to the current step.</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: rgba(244, 63, 94, 0.2); background: rgba(244, 63, 94, 0.02);">
                     <h3>❌ Unplanned: Blind Exploration</h3>
-                    <p style="font-size: 0.95rem;">Agent searches the repository aimlessly, reading unrelated files and cluttering the context window with useless tokens.</p>
+                    <p style="font-size: 0.95rem;">Agent searches the codebase aimlessly, reading unrelated files and wasting tokens.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05);">
                     <h3>✅ Planned: Isolated Context</h3>
-                    <p style="font-size: 0.95rem;">The plan divides the task into micro-steps. In step 1, the agent reads <strong>only one specific file</strong>, remaining isolated from repository noise.</p>
+                    <p style="font-size: 0.95rem;">The plan splits the task. In step 1, the agent reads only one file, avoiding repository noise.</p>
                 </div>
             </div>
         </div>
@@ -484,9 +483,9 @@
                     <span class="badge" style="color: var(--code-keyword); border-color: rgba(244, 63, 94, 0.2); margin-bottom: 1rem;">Spontaneous Coding</span>
                     <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Code on the Fly</h3>
                     <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.95rem;">
-                        <li>• 1 direct code instruction prompt</li>
-                        <li>• 4 compiler error feedback loops</li>
-                        <li>• potential context snowballing</li>
+                        <li>• 1 direct code prompt</li>
+                        <li>• 4 compiler error loops</li>
+                        <li>• Context grows fast</li>
                     </ul>
                 </div>
                 <div style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
@@ -502,10 +501,10 @@
                     <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Plan ➔ Implement</h3>
                     <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.95rem;">
                         <li>• 1 planning prompt</li>
-                        <li>• 2 - 3 clarify ambiguities and uncertainties</li>
-                        <li>• 1 - 3 feedback loop to refine the plan </li>
-                        <li>• 1 targeted clean execution step</li>
-                        <li>• minimal context growth</li>
+                        <li>• 2 - 3 prompts clarifying requirements</li>
+                        <li>• 1 - 3 prompts refining the plan</li>
+                        <li>• 1 targeted execution step</li>
+                        <li>• Minimal context growth</li>
                     </ul>
                 </div>
                 <div style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
@@ -517,7 +516,7 @@
     
         <!-- Savings Indicator -->
         <div style="text-align: right; margin-top: 1.5rem; font-weight: 800; font-size: 1.25rem; color: var(--accent-color);">
-            Average Savings: ~50% Tokens Billed Per Task
+            Average Savings: ~50% off your token bill
         </div>
     </div>
     <div class="notes">
@@ -533,17 +532,17 @@
         <div class="column-left">
             <span class="section-label">Summary</span>
             <h2>Architect vs. <span class="gradient-text">Mechanic</span></h2>
-            <p class="desc-text">Treat the AI like an architect to validate design blueprints, not like a mechanic trying random adjustments until something works.</p>
+            <p class="desc-text">Use the AI as an architect to design blueprints, not a mechanic trying random fixes.</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
                     <h3>📋 Rule: Blueprints First</h3>
-                    <p style="font-size: 0.95rem;">Always validate the technical solution plan in text before permitting the agent to touch or modify the codebase.</p>
+                    <p style="font-size: 0.95rem;">Always agree on a text plan before letting the agent modify code.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem; border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05);">
                     <h3>💡 Cheap Edits</h3>
-                    <p style="font-size: 0.95rem;">Correcting logical mistakes in a text plan costs a single sentence. Correcting them in active code costs thousands of tokens.</p>
+                    <p style="font-size: 0.95rem;">Fixing logical errors in text costs a single sentence. Fixing them in code costs thousands of tokens.</p>
                 </div>
             </div>
         </div>
@@ -563,7 +562,7 @@
             <span class="badge">Tool Showcase: Caveman Skill</span>
         </div>
         <h1 class="main-title">The Caveman <span class="gradient-text">Skill</span></h1>
-        <p class="subtitle">"Why use many token when few do trick."<br>A Claude Code plugin that cuts ~75% of output tokens while maintaining 100% technical accuracy.</p>
+        <p class="subtitle">"Why use many token when few do trick."<br>A plugin that cuts ~75% of output tokens with 100% technical accuracy.</p>
         <div class="title-footer">
             <span class="author">Brain Still Big. Mouth Small.</span>
             <span class="divider">•</span>
@@ -583,17 +582,17 @@
         <div class="column-left">
             <span class="section-label">Brevity Science</span>
             <h2>Less Word = <span class="gradient-text">More Correct</span></h2>
-            <p class="desc-text">A March 2026 paper, <em>"Brevity Constraints Reverse Performance Hierarchies in Language Models"</em>, discovered that constraining LLMs to brief responses improved accuracy by 26 points on certain benchmarks.</p>
+            <p class="desc-text">A March 2026 paper ("Brevity Constraints...") found that forcing LLMs to be brief improved accuracy by up to 26 points on benchmarks.</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem; border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.05);">
                     <h3>⚡ ~3x Speed Increase</h3>
-                    <p style="font-size: 0.95rem;">Fewer output tokens mean the model finishes printing its response almost instantly, accelerating feedback loops.</p>
+                    <p style="font-size: 0.95rem;">Fewer output tokens mean the model responds almost instantly, speeding up feedback.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem; border-color: var(--code-keyword); background: rgba(244, 63, 94, 0.05);">
                     <h3>🎯 100% Technical Accuracy</h3>
-                    <p style="font-size: 0.95rem;">The logic and code output are unchanged—the model simply strips conversational fluff and replies in direct fragments.</p>
+                    <p style="font-size: 0.95rem;">Logic and code remain the same—the model strips conversational fluff and replies in short fragments.</p>
                 </div>
             </div>
         </div>
@@ -735,7 +734,7 @@
         <div class="code-header">
             <span class="section-label">Skill Trigger</span>
             <h2>Triggering Caveman in Chat</h2>
-            <p>Activate the compression skill on-demand inside your active agent session using standard slash commands.</p>
+            <p>Activate the compression skill in your active session using slash commands.</p>
         </div>
         <div class="code-container glass-panel">
             <div class="code-bar">
@@ -763,7 +762,7 @@
             <span class="badge">Tool Showcase: RTK</span>
         </div>
         <h1 class="main-title">Rust Token <span class="gradient-text">Killer</span></h1>
-        <p class="subtitle">A high-performance CLI proxy designed to intercept and compress verbose terminal logs for AI coding agents.</p>
+        <p class="subtitle">A CLI proxy that intercepts and compresses verbose terminal logs for AI agents.</p>
         <div class="title-footer">
             <span class="author">Introducing RTK</span>
             <span class="divider">•</span>
@@ -783,21 +782,21 @@
         <div class="column-left">
             <span class="section-label">Problem & Solution</span>
             <h2>Why do we need <span class="gradient-text">RTK?</span></h2>
-            <p class="desc-text">AI coding agents waste up to 70% of their context window on verbose terminal noise (like long unit test logs or file trees). RTK resolves this by filtering out the noise.</p>
+            <p class="desc-text">Agents waste up to 70% of their context window on terminal noise (like test logs or file trees). RTK filters this out.</p>
         </div>
         <div class="column-right">
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem;">
                     <h3>⏳ 3x Longer Sessions</h3>
-                    <p style="font-size: 0.95rem;">Stops context windows from overflowing with junk data, extending valid coding sessions before requiring a hard restart.</p>
+                    <p style="font-size: 0.95rem;">Stops context windows from overflowing, making coding sessions last longer before needing a restart.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05);">
                     <h3>💰 Major Cost Reductions</h3>
-                    <p style="font-size: 0.95rem;">Cuts API expenses by up to 70%, saving an estimated <strong>$1,750/month</strong> for a team of 10 developers.</p>
+                    <p style="font-size: 0.95rem;">Cuts API costs by up to 70%, saving an estimated $1,750/month for a 10-developer team.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem;">
                     <h3>🎯 Better AI Reasoning</h3>
-                    <p style="font-size: 0.95rem;">Exposes only actionable data, avoiding attention drift and improving code fix accuracy.</p>
+                    <p style="font-size: 0.95rem;">Shows only actionable data, improving reasoning and code fix accuracy.</p>
                 </div>
             </div>
         </div>
@@ -815,14 +814,14 @@
         <div class="code-header">
             <span class="section-label">Hook Mechanics</span>
             <h2>Frictionless Auto-Rewrite</h2>
-            <p>RTK runs silently in the background, intercepting agent executions using native settings or hooks, completely hidden from the AI agent.</p>
+            <p>RTK runs silently in the background, intercepting commands using hooks, hidden from the agent.</p>
         </div>
         <div class="code-container glass-panel" style="padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; font-family: var(--font-primary);">
             <div style="display: flex; gap: 2rem; align-items: center;">
                 <span style="font-size: 2rem; color: var(--accent-color);">🔌</span>
                 <div>
                     <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem; color: var(--text-color);">Pre-Use Interception</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-muted);">Hooks like Claude Code's <code>PreToolUse</code> catch command triggers and prefix them with <code>rtk</code> automatically.</p>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">Hooks catch command triggers and prefix them with <code>rtk</code> automatically.</p>
                 </div>
             </div>
         </div>
@@ -887,7 +886,7 @@
     
         <!-- Bottom: Summary Banner -->
         <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">When exploring modular structure, RTK strips logic bodies and sends signatures only.</span>
+            <span style="font-size: 1.1rem; color: var(--text-muted);">When exploring structure, RTK strips function bodies and sends signatures only.</span>
             <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
                 Raw: 4,200 ➔ RTK: 210 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 3,990 tokens (95%)</span>
             </div>
@@ -944,7 +943,7 @@
     
         <!-- Bottom: Summary Banner -->
         <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK collapses unchanged context blocks, index info, and metadata line headers.</span>
+            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK hides unchanged code blocks, git index info, and metadata headers.</span>
             <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
                 Raw: 8,400 ➔ RTK: 504 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 7,896 tokens (94%)</span>
             </div>
@@ -1005,7 +1004,7 @@
     
         <!-- Bottom: Summary Banner -->
         <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips help texts and formats status into a single-line summary mapping branch and changes.</span>
+            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips help text and formats status into a single-line summary.</span>
             <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
                 Raw: 120 ➔ RTK: 30 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 90 tokens (75%)</span>
             </div>
@@ -1062,7 +1061,7 @@
     
         <!-- Bottom: Summary Banner -->
         <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK aggregates matches under file headers, eliminating repeating file paths on every result line.</span>
+            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK groups matches under file headers, removing repeated paths from every line.</span>
             <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
                 Raw: 2,108 ➔ RTK: 940 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 1,168 tokens (55%)</span>
             </div>
@@ -1123,7 +1122,7 @@
     
         <!-- Bottom: Summary Banner -->
         <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips file permissions, owners, groups, and creation timestamps, exporting only file names and sizes.</span>
+            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips file permissions, owners, and dates, showing only file names and sizes.</span>
             <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
                 Raw: 3,200 ➔ RTK: 640 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 2,560 tokens (80%)</span>
             </div>
@@ -1187,7 +1186,7 @@
     
         <!-- Bottom: Summary Banner -->
         <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips scripts, description details, and metadata formatting, keeping only active dependency signatures.</span>
+            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips scripts and metadata formatting, keeping only dependency names and versions.</span>
             <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
                 Raw: 368 ➔ RTK: 55 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 313 tokens (85%)</span>
             </div>
