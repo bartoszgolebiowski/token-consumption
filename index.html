@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity Deck - HTML Presentation Engine</title>
+    <meta name="description" content="A premium, interactive HTML, CSS, and JS-based presentation slide deck template with modern design and animations.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="theme-glass-dark">
+    <!-- Presentation Container -->
+    <div id="presentation-container" class="presentation-container">
+        
+        <!-- Slides Wrapper -->
+        <div id="slides-wrapper" class="slides-wrapper">
+            <!-- START SLIDE: 01-title.html -->
+<section class="slide" id="slide-01-title" data-transition="zoom">
+    <div class="slide-content slide-layout-title">
+        <div class="hero-glow"></div>
+        <div class="title-header">
+            <span class="badge">Introducing Antigravity Deck</span>
+        </div>
+        <h1 class="main-title">Modern HTML<br><span class="gradient-text">Presentations</span></h1>
+        <p class="subtitle">A stunning, lightweight, and interactive foundation for code-driven decks.</p>
+        <div class="title-footer">
+            <span class="author">By Antigravity CLI</span>
+            <span class="divider">•</span>
+            <span class="date">June 2026</span>
+        </div>
+        <div class="notes">
+            Welcome the audience. Introduce the framework and explain that this is entirely built with native web tech: HTML, CSS, and JavaScript.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 01-title.html -->
+
+
+<!-- START SLIDE: 02-features.html -->
+<section class="slide" id="slide-02-features" data-transition="slide-horizontal">
+    <div class="slide-content slide-layout-split">
+        <div class="column-left">
+            <span class="section-label">Engine Features</span>
+            <h2>Engineered for <span class="gradient-text">Speed</span> & Beauty</h2>
+            <p class="desc-text">Built on modern CSS custom properties and standard ES6+ JavaScript. No bulky frameworks, just raw performance and ultimate flexibility.</p>
+            <ul class="feature-list">
+                <li><span class="icon">✦</span> Zero configuration needed</li>
+                <li><span class="icon">✦</span> High performance GPU transitions</li>
+                <li><span class="icon">✦</span> Responsive flex and grid layouts</li>
+                <li><span class="icon">✦</span> Seamless customization controls</li>
+            </ul>
+        </div>
+        <div class="column-right">
+            <div class="showcase-grid">
+                <div class="showcase-card glass-panel hover-lift">
+                    <div class="card-icon">⚡</div>
+                    <h3>Vite Powered</h3>
+                    <p>Hot reloading enables instant visual feedback during editing.</p>
+                </div>
+                <div class="showcase-card glass-panel hover-lift">
+                    <div class="card-icon">🎨</div>
+                    <h3>Custom Themes</h3>
+                    <p>Switch between dark, light, and neon presets with a single click.</p>
+                </div>
+                <div class="showcase-card glass-panel hover-lift">
+                    <div class="card-icon">⌨️</div>
+                    <h3>Hotkeys</h3>
+                    <p>Keyboard, touch swipes, and presenter controls built-in.</p>
+                </div>
+                <div class="showcase-card glass-panel hover-lift">
+                    <div class="card-icon">👁️</div>
+                    <h3>Overview Mode</h3>
+                    <p>Press 'O' to zoom out and see all slides in a clean interactive grid.</p>
+                </div>
+            </div>
+        </div>
+        <div class="notes">
+            Highlight that the performance is exceptional due to GPU acceleration. Explain the modular code structure, which allows adding slides easily.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 02-features.html -->
+
+
+<!-- START SLIDE: 03-code.html -->
+<section class="slide" id="slide-03-code" data-transition="slide-vertical">
+    <div class="slide-content slide-layout-code">
+        <div class="code-header">
+            <span class="section-label">Extensibility</span>
+            <h2>Adding New Slides Is <span class="gradient-text">Simple</span></h2>
+            <p>Just add a new HTML file under the <code>pages/</code> directory. The build compiler automatically wraps it and injects it into your deck.</p>
+        </div>
+        <div class="code-container glass-panel">
+            <div class="code-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="file-name">pages/06-my-slide.html</span>
+            </div>
+            <pre><code><span class="html-tag">&lt;!-- transition: zoom, layout: slide-layout-title --&gt;</span>
+        <span class="html-tag">&lt;h2&gt;</span>My New Slide Title<span class="html-tag">&lt;/h2&gt;</span>
+        <span class="html-tag">&lt;p&gt;</span>Exciting slide body content goes here...<span class="html-tag">&lt;/p&gt;</span>
+        <span class="html-tag">&lt;div</span> <span class="html-attr">class</span>=<span class="html-str">"notes"</span><span class="html-tag">&gt;</span>
+            Presenter notes visible in speaker mode.
+        <span class="html-tag">&lt;/div&gt;</span></code></pre>
+        </div>
+        <div class="notes">
+            Show how clean the markup is now that the wrapping section has been removed. Explain that they can customize transitions and layouts using comments.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 03-code.html -->
+
+
+<!-- START SLIDE: 04-quote.html -->
+<section class="slide" id="slide-04-quote" data-transition="zoom">
+    <div class="slide-content slide-layout-quote">
+        <div class="quote-glow"></div>
+        <div class="quote-mark">“</div>
+        <blockquote class="quote-text">
+            Design is not just what it looks like and feels like. Design is <span class="gradient-text">how it works</span>.
+        </blockquote>
+        <cite class="quote-author">— Steve Jobs</cite>
+        <div class="notes">
+            Keep this slide high-impact. Pause and explain how the visual focus helps anchor key messages during a presentation.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 04-quote.html -->
+
+
+<!-- START SLIDE: 05-summary.html -->
+<section class="slide" id="slide-05-summary" data-transition="slide-horizontal">
+    <div class="slide-content slide-layout-summary">
+        <span class="section-label">Conclusion</span>
+        <h2>Ready to Build Your Deck?</h2>
+        <p class="summary-sub">Start editing this file to add your own slides and customize the themes.</p>
+        
+        <div class="summary-grid">
+            <div class="summary-column glass-panel">
+                <h3>⌨️ Shortcuts</h3>
+                <ul>
+                    <li><strong>Space / Right Arrow</strong>: Next Slide</li>
+                    <li><strong>Left Arrow</strong>: Previous Slide</li>
+                    <li><strong>O Key</strong>: Toggle Overview Mode</li>
+                    <li><strong>T Key</strong>: Cycle Styling Themes</li>
+                    <li><strong>N Key</strong>: Toggle Speaker Notes Drawer</li>
+                    <li><strong>F Key</strong>: Toggle Fullscreen Mode</li>
+                </ul>
+            </div>
+            <div class="summary-column glass-panel">
+                <h3>📁 Project Structure</h3>
+                <ul>
+                    <li><strong>pages/</strong>: Place your minimal HTML files here</li>
+                    <li><strong>theme.css</strong>: Change presentation coloring and themes</li>
+                    <li><strong>style.css</strong>: Core layouts and navigation drawer styles</li>
+                    <li><strong>template.html</strong>: The presentation shell template</li>
+                </ul>
+            </div>
+        </div>
+        <div class="notes">
+            Summarize the project structure. Invite the developer to copy, paste, and alter sections in index.html to create their own custom slides.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 05-summary.html -->
+
+
+        </div>
+
+        <!-- Presenter Controls Overlay -->
+        <div class="presentation-controls" id="deck-controls">
+            <!-- Left Navigation -->
+            <button class="control-btn" id="prev-btn" aria-label="Previous Slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            
+            <!-- Slide Indicator -->
+            <div class="slide-counter glass-panel" id="slide-indicator">
+                <span id="current-slide-num">1</span>
+                <span class="counter-divider">/</span>
+                <span id="total-slides-num">1</span>
+            </div>
+
+            <!-- Right Navigation -->
+            <button class="control-btn" id="next-btn" aria-label="Next Slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="controls-divider"></div>
+
+            <!-- Overview Mode Toggler -->
+            <button class="control-btn" id="overview-btn" title="Toggle Overview Mode (O)" aria-label="Toggle Overview Mode">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+            </button>
+
+            <!-- Theme Picker -->
+            <button class="control-btn" id="theme-btn" title="Cycle Themes (T)" aria-label="Change Theme">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+            </button>
+
+            <!-- Notes Toggler -->
+            <button class="control-btn" id="notes-btn" title="Speaker Notes (N)" aria-label="Toggle Speaker Notes">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </button>
+
+            <!-- Help Button -->
+            <button class="control-btn" id="help-btn" title="Show Keyboard Help (?)" aria-label="Toggle Shortcuts Info">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Speaker Notes Drawer (Drawer Panel) -->
+        <div class="speaker-notes-panel" id="speaker-notes-drawer">
+            <div class="panel-header">
+                <h3>Presenter Notes</h3>
+                <button class="close-btn" id="close-notes-btn">&times;</button>
+            </div>
+            <div class="panel-body" id="speaker-notes-content">
+                <!-- Injected dynamically by JS -->
+            </div>
+        </div>
+
+        <!-- Help Modal Dialog -->
+        <div class="help-modal" id="shortcuts-modal">
+            <div class="modal-content glass-panel">
+                <div class="modal-header">
+                    <h2>Keyboard Shortcuts</h2>
+                    <button class="close-btn" id="close-help-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="shortcut-row"><span>Space / PageDown / ➔</span><span>Next Slide</span></div>
+                    <div class="shortcut-row"><span>Shift+Space / PageUp / ➔</span><span>Previous Slide</span></div>
+                    <div class="shortcut-row"><span>Home / End</span><span>First / Last Slide</span></div>
+                    <div class="shortcut-row"><span>O Key</span><span>Toggle Grid Overview</span></div>
+                    <div class="shortcut-row"><span>T Key</span><span>Cycle Color Themes</span></div>
+                    <div class="shortcut-row"><span>N Key</span><span>Toggle Presenter Notes</span></div>
+                    <div class="shortcut-row"><span>F Key</span><span>Toggle Fullscreen</span></div>
+                    <div class="shortcut-row"><span>? Key</span><span>Toggle Help Dialog</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Progress Indicator -->
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-indicator"></div>
+        </div>
+    </div>
+
+    <!-- Presentation Engine Scripts -->
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

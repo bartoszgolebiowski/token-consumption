@@ -1,0 +1,88 @@
+/* ==========================================================================
+   ANTIGRAVITY DECK - COLORS & DESIGN THEMES DEDICATED STYLESHEET
+   Edit this file to change the color palettes, gradients, and glowing accents.
+   ========================================================================== */
+
+/* 1. Theme: Glass Dark (Default Preset) */
+.theme-glass-dark {
+    --bg-color: #0b0f19;
+    --bg-gradient: radial-gradient(circle at 50% 50%, #151b2e 0%, #080c14 100%);
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-color: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.5);
+    --gradient-1: #6366f1;
+    --gradient-2: #ec4899;
+    --glass-bg: rgba(21, 27, 46, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.03);
+    --panel-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --code-keyword: #f43f5e;
+    --code-string: #10b981;
+    --code-tag: #3b82f6;
+    --code-attr: #fb923c;
+    --card-glow: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 60%);
+}
+
+/* 2. Theme: Cyberpunk Neon */
+.theme-cyberpunk {
+    --bg-color: #050505;
+    --bg-gradient: linear-gradient(135deg, #050505 0%, #12021c 100%);
+    --text-color: #ffffff;
+    --text-muted: #8b9bb4;
+    --accent-color: #00f0ff;
+    --accent-glow: rgba(0, 240, 255, 0.6);
+    --gradient-1: #00f0ff;
+    --gradient-2: #ff007f;
+    --glass-bg: rgba(5, 5, 5, 0.75);
+    --glass-border: #00f0ff33;
+    --glass-highlight: rgba(255, 0, 127, 0.05);
+    --panel-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+    --code-keyword: #ff007f;
+    --code-string: #00ff66;
+    --code-tag: #00f0ff;
+    --code-attr: #ffea00;
+    --card-glow: radial-gradient(circle at top right, rgba(255, 0, 127, 0.2), transparent 70%);
+}
+
+/* 3. Theme: Warm Sunset */
+.theme-warm-sunset {
+    --bg-color: #160c0e;
+    --bg-gradient: radial-gradient(circle at 20% 20%, #291217 0%, #0d0607 100%);
+    --text-color: #fff1f2;
+    --text-muted: #fda4af;
+    --accent-color: #f43f5e;
+    --accent-glow: rgba(244, 63, 94, 0.5);
+    --gradient-1: #f43f5e;
+    --gradient-2: #fb923c;
+    --glass-bg: rgba(35, 18, 22, 0.5);
+    --glass-border: rgba(244, 63, 94, 0.15);
+    --glass-highlight: rgba(251, 146, 60, 0.05);
+    --panel-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    --code-keyword: #fb7185;
+    --code-string: #facc15;
+    --code-tag: #fb923c;
+    --code-attr: #f43f5e;
+    --card-glow: radial-gradient(circle at top right, rgba(251, 146, 60, 0.15), transparent 60%);
+}
+
+/* 4. Theme: Minimal Light */
+.theme-minimal-light {
+    --bg-color: #f8fafc;
+    --bg-gradient: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+    --text-color: #0f172a;
+    --text-muted: #64748b;
+    --accent-color: #2563eb;
+    --accent-glow: rgba(37, 99, 235, 0.2);
+    --gradient-1: #2563eb;
+    --gradient-2: #06b6d4;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(15, 23, 42, 0.08);
+    --glass-highlight: rgba(15, 23, 42, 0.02);
+    --panel-shadow: 0 10px 30px 0 rgba(15, 23, 42, 0.05);
+    --code-keyword: #d97706;
+    --code-string: #059669;
+    --code-tag: #2563eb;
+    --code-attr: #7c3aed;
+    --card-glow: radial-gradient(circle at top right, rgba(6, 182, 212, 0.08), transparent 60%);
+}

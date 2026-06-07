@@ -1,0 +1,16 @@
+{
+  "name": "html-presentation-framework",
+  "version": "1.0.0",
+  "description": "A premium, feature-rich HTML, CSS, and JS presentation framework.",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "compile": "node build.js"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

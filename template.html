@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity Deck - HTML Presentation Engine</title>
+    <meta name="description" content="A premium, interactive HTML, CSS, and JS-based presentation slide deck template with modern design and animations.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="theme-glass-dark">
+    <!-- Presentation Container -->
+    <div id="presentation-container" class="presentation-container">
+        
+        <!-- Slides Wrapper -->
+        <div id="slides-wrapper" class="slides-wrapper">
+            <!-- SLIDES_PLACEHOLDER -->
+        </div>
+
+        <!-- Presenter Controls Overlay -->
+        <div class="presentation-controls" id="deck-controls">
+            <!-- Left Navigation -->
+            <button class="control-btn" id="prev-btn" aria-label="Previous Slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            
+            <!-- Slide Indicator -->
+            <div class="slide-counter glass-panel" id="slide-indicator">
+                <span id="current-slide-num">1</span>
+                <span class="counter-divider">/</span>
+                <span id="total-slides-num">1</span>
+            </div>
+
+            <!-- Right Navigation -->
+            <button class="control-btn" id="next-btn" aria-label="Next Slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="controls-divider"></div>
+
+            <!-- Overview Mode Toggler -->
+            <button class="control-btn" id="overview-btn" title="Toggle Overview Mode (O)" aria-label="Toggle Overview Mode">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+            </button>
+
+            <!-- Theme Picker -->
+            <button class="control-btn" id="theme-btn" title="Cycle Themes (T)" aria-label="Change Theme">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+            </button>
+
+            <!-- Notes Toggler -->
+            <button class="control-btn" id="notes-btn" title="Speaker Notes (N)" aria-label="Toggle Speaker Notes">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </button>
+
+            <!-- Help Button -->
+            <button class="control-btn" id="help-btn" title="Show Keyboard Help (?)" aria-label="Toggle Shortcuts Info">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Speaker Notes Drawer (Drawer Panel) -->
+        <div class="speaker-notes-panel" id="speaker-notes-drawer">
+            <div class="panel-header">
+                <h3>Presenter Notes</h3>
+                <button class="close-btn" id="close-notes-btn">&times;</button>
+            </div>
+            <div class="panel-body" id="speaker-notes-content">
+                <!-- Injected dynamically by JS -->
+            </div>
+        </div>
+
+        <!-- Help Modal Dialog -->
+        <div class="help-modal" id="shortcuts-modal">
+            <div class="modal-content glass-panel">
+                <div class="modal-header">
+                    <h2>Keyboard Shortcuts</h2>
+                    <button class="close-btn" id="close-help-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="shortcut-row"><span>Space / PageDown / ➔</span><span>Next Slide</span></div>
+                    <div class="shortcut-row"><span>Shift+Space / PageUp / ➔</span><span>Previous Slide</span></div>
+                    <div class="shortcut-row"><span>Home / End</span><span>First / Last Slide</span></div>
+                    <div class="shortcut-row"><span>O Key</span><span>Toggle Grid Overview</span></div>
+                    <div class="shortcut-row"><span>T Key</span><span>Cycle Color Themes</span></div>
+                    <div class="shortcut-row"><span>N Key</span><span>Toggle Presenter Notes</span></div>
+                    <div class="shortcut-row"><span>F Key</span><span>Toggle Fullscreen</span></div>
+                    <div class="shortcut-row"><span>? Key</span><span>Toggle Help Dialog</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Progress Indicator -->
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-indicator"></div>
+        </div>
+    </div>
+
+    <!-- Presentation Engine Scripts -->
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
