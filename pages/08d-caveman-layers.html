@@ -1,0 +1,45 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">Brevity Comparison</span>
+    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Output Comparison: React Re-render</h2>
+
+    <!-- Side-by-Side Comparison Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        
+        <!-- Left: Normal Claude -->
+        <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
+            <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
+                <span class="dot red"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">🗣️ Normal Claude</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1.25rem; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word;"><code>"The reason your React component is re-rendering is likely because you're creating a new object reference on each render cycle. When you pass an inline object as a prop, React's shallow comparison sees it as a different object every time, which triggers a re-render. I'd recommend using useMemo to memoize the object."</code></pre>
+            <div style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--glass-border); text-align: right; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+                69 Tokens
+            </div>
+        </div>
+
+        <!-- Right: Caveman Claude -->
+        <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
+            <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
+                <span class="dot green"></span>
+                <span class="file-name" style="color: var(--text-color); font-weight: 600;">⛏️ Caveman Claude</span>
+            </div>
+            <pre style="font-size: 0.85rem; padding: 1.25rem; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word;"><code>"New object ref each render. Inline object prop = new ref = re-render. Wrap in useMemo."</code></pre>
+            <div style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--glass-border); text-align: right; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+                19 Tokens
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom: Summary Banner -->
+    <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
+        <span style="font-size: 1.1rem; color: var(--text-muted);">Same technical solution. 72% fewer words. Faster response.</span>
+        <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
+            Saved: 50 output tokens (72% reduction)
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Show the before/after: Normal Claude explains in full conversational paragraphs. Caveman Claude gives the exact same advice in brief, actionable technical fragments, saving 72% of output tokens.
+</div>
