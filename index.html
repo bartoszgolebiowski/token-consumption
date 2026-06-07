@@ -332,6 +332,229 @@
 <!-- END SLIDE: 08-agent-skills.html -->
 
 
+<!-- START SLIDE: 08a1-planning-title.html -->
+<section class="slide" id="slide-08a1-planning-title" data-transition="zoom">
+    <div class="slide-content slide-layout-title">
+        <div class="hero-glow"></div>
+        <div class="title-header">
+            <span class="badge">AI Mathematics</span>
+        </div>
+        <h1 class="main-title">Plan First,<br><span class="gradient-text">Code Second</span></h1>
+        <p class="subtitle">Why text-based planning is cheaper than coding on the fly, saving API budget and development latency.</p>
+        <div class="title-footer">
+            <span class="author">The Economics of Brevity</span>
+            <span class="divider">•</span>
+            <span class="date">Methodology</span>
+        </div>
+        <div class="notes">
+            Introduce the planning section: explaining why mapping out solutions in text before writing code is the most significant token-saving strategy you can implement.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 08a1-planning-title.html -->
+
+
+<!-- START SLIDE: 08a2-planning-pitfall.html -->
+<section class="slide" id="slide-08a2-planning-pitfall" data-transition="slide-horizontal">
+    <div class="slide-content slide-layout-split">
+        <div class="column-left">
+          <span class="section-label">Pitfalls</span>
+          <h2>The Cost of <span class="gradient-text">"Coding on the Fly"</span></h2>
+          <p class="desc-text">
+            Prompting an agent to write code immediately without a structure is a
+            developer's most expensive mistake, triggering compounding context loops.
+          </p>
+        </div>
+        <div class="column-right">
+          <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem">
+            <div
+              class="showcase-card glass-panel hover-lift"
+              style="
+                padding: 1.25rem 2rem;
+                border-color: rgba(244, 63, 94, 0.2);
+                background: rgba(244, 63, 94, 0.02);
+              "
+            >
+              <h3>🔁 Feedback Death Loop</h3>
+              <p style="font-size: 0.95rem">
+                AI writes code ➔ compiler throws errors ➔ AI attempts blind fixes ➔
+                breaks adjacent modules ➔ repeats.
+              </p>
+            </div>
+            <div
+              class="showcase-card glass-panel hover-lift"
+              style="
+                padding: 1.25rem 2rem;
+                border-color: var(--code-keyword);
+                background: rgba(244, 63, 94, 0.05);
+              "
+            >
+              <h3>❄️ Context Snowball Effect</h3>
+              <p style="font-size: 0.95rem">
+                Every iteration appends all previous prompts, files, and build logs to
+                the history. The cost grows exponentially.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="notes">
+          <p>Explain these two key pitfalls to the audience:</p>
+            <br/>
+          <p>
+            🔁 Feedback Death Loop: The AI writes code ➔ compiler throws errors ➔ AI
+            attempts blind fixes ➔ breaks adjacent modules ➔ repeats.
+          </p>
+          <br/>
+          <p>
+            ❄️ Context Snowball Effect: Every iteration appends all previous prompts,
+            files, and build logs to the history. The cost grows exponentially.
+          </p>
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 08a2-planning-pitfall.html -->
+
+
+<!-- START SLIDE: 08a3-planning-paradox.html -->
+<section class="slide" id="slide-08a3-planning-paradox" data-transition="slide-horizontal">
+    <div class="slide-content slide-layout-split">
+        <div class="column-left">
+            <span class="section-label">Optimization Mechanics</span>
+            <h2>The Plan <span class="gradient-text">Paradox</span></h2>
+            <p class="desc-text">It is significantly cheaper to pay once for a comprehensive text blueprint than to pay multiple times for code revisions.</p>
+        </div>
+        <div class="column-right">
+            <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem;">
+                    <h3>📉 The Planning Overhead</h3>
+                    <p style="font-size: 0.95rem;">Building a plan can still consume large token payloads if the model reads the entire repository context blindly at the start.</p>
+                </div>
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05);">
+                    <h3>⚡ Token-Optimized Planning</h3>
+                    <p style="font-size: 0.95rem;">By feeding only structured file signatures, summary indexes, and compressed rule guidelines, we keep the planning cost minimal.</p>
+                </div>
+            </div>
+        </div>
+        <div class="notes">
+            Correct the misconception: Planning is not automatically free. If the agent reads 50k tokens of code just to draft a plan, it is expensive. Emphasize that we must use token-optimized inputs (like signature-only reads and structured maps) to keep the planning cost low, which remains far cheaper than loop debugging.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 08a3-planning-paradox.html -->
+
+
+<!-- START SLIDE: 08a4-planning-tokens.html -->
+<section class="slide" id="slide-08a4-planning-tokens" data-transition="slide-vertical">
+    <div class="slide-content slide-layout-split">
+        <div class="column-left">
+            <span class="section-label">Context Management</span>
+            <h2>Targeted <span class="gradient-text">Context Isolation</span></h2>
+            <p class="desc-text">A structured plan enables you to segment development steps, ensuring the agent only accesses files relevant to the active sub-task.</p>
+        </div>
+        <div class="column-right">
+            <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: rgba(244, 63, 94, 0.2); background: rgba(244, 63, 94, 0.02);">
+                    <h3>❌ Unplanned: Blind Exploration</h3>
+                    <p style="font-size: 0.95rem;">Agent searches the repository aimlessly, reading unrelated files and cluttering the context window with useless tokens.</p>
+                </div>
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05);">
+                    <h3>✅ Planned: Isolated Context</h3>
+                    <p style="font-size: 0.95rem;">The plan divides the task into micro-steps. In step 1, the agent reads <strong>only one specific file</strong>, remaining isolated from repository noise.</p>
+                </div>
+            </div>
+        </div>
+        <div class="notes">
+            Explain how planning enables context isolation. Instead of letting the agent read the whole project, the plan tells it exactly which file is needed for Step 1, cutting inputs dramatically.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 08a4-planning-tokens.html -->
+
+
+<!-- START SLIDE: 08a5-planning-calculation.html -->
+<section class="slide" id="slide-08a5-planning-calculation" data-transition="zoom">
+    <div class="slide-content" style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+        <span class="section-label">Case Study Comparison</span>
+        <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">The Math: <span class="gradient-text">Spontaneous vs. Planned</span></h2>
+    
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: stretch;">
+            <!-- Spontaneous Coding -->
+            <div class="glass-panel hover-lift" style="padding: 2rem; border-color: rgba(244, 63, 94, 0.3); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="badge" style="color: var(--code-keyword); border-color: rgba(244, 63, 94, 0.2); margin-bottom: 1rem;">Spontaneous Coding</span>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Code on the Fly</h3>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.95rem;">
+                        <li>• 1 direct code instruction prompt</li>
+                        <li>• 4 compiler error feedback loops</li>
+                        <li>• potential context snowballing</li>
+                    </ul>
+                </div>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
+                    <span style="font-size: 0.95rem; color: var(--text-muted);">Total Tokens:</span>
+                    <span style="font-size: 2rem; font-weight: 800; color: var(--code-keyword); font-family: var(--font-mono);">~400,000</span>
+                </div>
+            </div>
+    
+            <!-- Planned Coding -->
+            <div class="glass-panel hover-lift" style="padding: 2rem; border-color: rgba(16, 185, 129, 0.3); display: flex; flex-direction: column; justify-content: space-between; background: rgba(16, 185, 129, 0.02);">
+                <div>
+                    <span class="badge" style="color: var(--code-string); border-color: rgba(16, 185, 129, 0.2); margin-bottom: 1rem;">Planned Coding</span>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Plan ➔ Implement</h3>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.95rem;">
+                        <li>• 1 planning prompt</li>
+                        <li>• 2 - 3 clarify ambiguities and uncertainties</li>
+                        <li>• 1 - 3 feedback loop to refine the plan </li>
+                        <li>• 1 targeted clean execution step</li>
+                        <li>• minimal context growth</li>
+                    </ul>
+                </div>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
+                    <span style="font-size: 0.95rem; color: var(--text-muted);">Total Tokens:</span>
+                    <span style="font-size: 2rem; font-weight: 800; color: var(--code-string); font-family: var(--font-mono);">~200,000</span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Savings Indicator -->
+        <div style="text-align: right; margin-top: 1.5rem; font-weight: 800; font-size: 1.25rem; color: var(--accent-color);">
+            Average Savings: ~50% Tokens Billed Per Task
+        </div>
+    </div>
+    <div class="notes">
+        Review the math: Coding directly results in multiple compiler error loops and massive context snowballing. Planning first costs only a few tokens for text and results in a clean, one-shot code delivery.
+    </div>
+</section>
+<!-- END SLIDE: 08a5-planning-calculation.html -->
+
+
+<!-- START SLIDE: 08a6-planning-summary.html -->
+<section class="slide" id="slide-08a6-planning-summary" data-transition="slide-horizontal">
+    <div class="slide-content slide-layout-split">
+        <div class="column-left">
+            <span class="section-label">Summary</span>
+            <h2>Architect vs. <span class="gradient-text">Mechanic</span></h2>
+            <p class="desc-text">Treat the AI like an architect to validate design blueprints, not like a mechanic trying random adjustments until something works.</p>
+        </div>
+        <div class="column-right">
+            <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
+                    <h3>📋 Rule: Blueprints First</h3>
+                    <p style="font-size: 0.95rem;">Always validate the technical solution plan in text before permitting the agent to touch or modify the codebase.</p>
+                </div>
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem; border-color: var(--accent-color); background: rgba(99, 102, 241, 0.05);">
+                    <h3>💡 Cheap Edits</h3>
+                    <p style="font-size: 0.95rem;">Correcting logical mistakes in a text plan costs a single sentence. Correcting them in active code costs thousands of tokens.</p>
+                </div>
+            </div>
+        </div>
+        <div class="notes">
+            Conclude the planning section: shift the team's philosophy to validate designs in text first. Blueprints are cheap to fix; code is expensive.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 08a6-planning-summary.html -->
+
+
 <!-- START SLIDE: 08b-caveman-intro.html -->
 <section class="slide" id="slide-08b-caveman-intro" data-transition="zoom">
     <div class="slide-content slide-layout-title">
@@ -504,6 +727,32 @@
     </div>
 </section>
 <!-- END SLIDE: 08e-caveman-memory.html -->
+
+
+<!-- START SLIDE: 08f-caveman-trigger.html -->
+<section class="slide" id="slide-08f-caveman-trigger" data-transition="slide-horizontal">
+    <div class="slide-content slide-layout-code">
+        <div class="code-header">
+            <span class="section-label">Skill Trigger</span>
+            <h2>Triggering Caveman in Chat</h2>
+            <p>Activate the compression skill on-demand inside your active agent session using standard slash commands.</p>
+        </div>
+        <div class="code-container glass-panel">
+            <div class="code-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="file-name">agent chat session</span>
+            </div>
+            <pre><code><span class="html-attr">dev:</span> <span class="html-tag">/caveman full, why i have so many rerenders</span>
+        <span class="html-str">agent:  "New object ref each render. Inline object prop = new ref = re-render. Wrap in useMemo." </span>
+        </div>
+        <div class="notes">
+            Explain how the skill is activated. The developer types /caveman full to change settings. When they follow up with "why i have so many rerenders", the agent outputs in caveman fragment mode.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 08f-caveman-trigger.html -->
 
 
 <!-- START SLIDE: 09-rtk-intro.html -->

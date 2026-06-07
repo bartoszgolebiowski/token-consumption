@@ -1,0 +1,54 @@
+<!-- transition: slide-horizontal, layout: slide-layout-split -->
+<div class="column-left">
+  <span class="section-label">Pitfalls</span>
+  <h2>The Cost of <span class="gradient-text">"Coding on the Fly"</span></h2>
+  <p class="desc-text">
+    Prompting an agent to write code immediately without a structure is a
+    developer's most expensive mistake, triggering compounding context loops.
+  </p>
+</div>
+<div class="column-right">
+  <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem">
+    <div
+      class="showcase-card glass-panel hover-lift"
+      style="
+        padding: 1.25rem 2rem;
+        border-color: rgba(244, 63, 94, 0.2);
+        background: rgba(244, 63, 94, 0.02);
+      "
+    >
+      <h3>🔁 Feedback Death Loop</h3>
+      <p style="font-size: 0.95rem">
+        AI writes code ➔ compiler throws errors ➔ AI attempts blind fixes ➔
+        breaks adjacent modules ➔ repeats.
+      </p>
+    </div>
+    <div
+      class="showcase-card glass-panel hover-lift"
+      style="
+        padding: 1.25rem 2rem;
+        border-color: var(--code-keyword);
+        background: rgba(244, 63, 94, 0.05);
+      "
+    >
+      <h3>❄️ Context Snowball Effect</h3>
+      <p style="font-size: 0.95rem">
+        Every iteration appends all previous prompts, files, and build logs to
+        the history. The cost grows exponentially.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="notes">
+  <p>Explain these two key pitfalls to the audience:</p>
+    <br/>
+  <p>
+    🔁 Feedback Death Loop: The AI writes code ➔ compiler throws errors ➔ AI
+    attempts blind fixes ➔ breaks adjacent modules ➔ repeats.
+  </p>
+  <br/>
+  <p>
+    ❄️ Context Snowball Effect: Every iteration appends all previous prompts,
+    files, and build logs to the history. The cost grows exponentially.
+  </p>
+</div>

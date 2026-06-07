@@ -62,7 +62,7 @@ export default function build() {
         }
 
         // Clean metadata comments from the content
-        const cleaned = content.replace(/<!--[\s\S]*?(?:transition|layout)[\s\S]*?-->/g, '').trim();
+        const cleaned = content.replace(/<!--(?:(?!-->).)*(?:transition|layout)(?:(?!-->).)*-->/gs, '').trim();
 
         // Standardize layout class names
         let layoutClass = metadata.layout.toLowerCase();
