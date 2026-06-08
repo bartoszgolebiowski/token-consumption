@@ -1,0 +1,102 @@
+<!-- transition: zoom, layout: none -->
+<div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <span class="section-label">AI Pitfalls in Action</span>
+    <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Visualizing <span class="gradient-text">The Cost Traps</span></h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: stretch;">
+        <!-- Left Column: Feedback Death Loop -->
+        <div class="glass-panel hover-lift" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(244, 63, 94, 0.3);">
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--code-keyword); display: flex; align-items: center; gap: 0.5rem;">
+                    <span>🔁</span> Feedback Death Loop
+                </h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">
+                    The agent attempts to fix compiler errors blindly. Without a high-level plan, it edits code, triggers new errors, and ends up in an endless, expensive loop.
+                </p>
+            </div>
+            
+            <!-- Loop Visualization Diagram -->
+            <div style="position: relative; height: 200px; display: flex; justify-content: center; align-items: center; margin: 1rem 0;">
+                <!-- Center Accents -->
+                <div style="position: absolute; width: 85px; height: 85px; border-radius: 50%; border: 2px dashed rgba(244, 63, 94, 0.4); display: flex; justify-content: center; align-items: center; background: rgba(244, 63, 94, 0.02);">
+                    <span style="font-size: 1.6rem; animation: pulse 2s ease-in-out infinite;">💸</span>
+                </div>
+                
+                <!-- Step 1: Write -->
+                <div style="position: absolute; top: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--code-string); font-family: var(--font-mono); font-size: 0.85rem; color: var(--code-string); font-weight: 600; z-index: 10;">
+                    1. Write Code
+                </div>
+                
+                <!-- Step 2: Compile -->
+                <div style="position: absolute; right: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; font-family: var(--font-mono); font-size: 0.85rem; color: #ef4444; font-weight: 600; z-index: 10;">
+                    2. Build Error
+                </div>
+                
+                <!-- Step 3: Blind Fix -->
+                <div style="position: absolute; bottom: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(251, 146, 60, 0.15); border: 1px solid var(--code-attr); font-family: var(--font-mono); font-size: 0.85rem; color: var(--code-attr); font-weight: 600; z-index: 10;">
+                    3. Blind Fix Attempt
+                </div>
+                
+                <!-- Step 4: Break dependencies -->
+                <div style="position: absolute; left: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(244, 63, 94, 0.15); border: 1px solid var(--code-keyword); font-family: var(--font-mono); font-size: 0.85rem; color: var(--code-keyword); font-weight: 600; z-index: 10;">
+                    4. Break Module
+                </div>
+
+                <!-- Circular arrows svg overlay -->
+                <svg style="position: absolute; width: 100%; height: 100%; pointer-events: none;" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(244, 63, 94, 0.2)" stroke-width="2" stroke-dasharray="6, 6" />
+                </svg>
+            </div>
+            
+            <div style="text-align: center; font-family: var(--font-mono); font-size: 0.9rem; color: var(--code-keyword); background: rgba(244, 63, 94, 0.08); padding: 0.5rem; border-radius: 8px;">
+                Loop continues indefinitely. Wastes time & money.
+            </div>
+        </div>
+
+        <!-- Right Column: Context Snowball Effect -->
+        <div class="glass-panel hover-lift" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(99, 102, 241, 0.3);">
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-color); display: flex; align-items: center; gap: 0.5rem;">
+                    <span>❄️</span> Context Snowball Effect
+                </h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.5;">
+                    As the feedback loop runs, every compile error, terminal log, and retry code is appended to the prompt history. The input context grows larger with each turn.
+                </p>
+            </div>
+            
+            <!-- Snowball Stacking Diagram -->
+            <div style="display: flex; flex-direction: column-reverse; gap: 0.5rem; align-items: center; margin: 1rem 0;">
+                <!-- Block 3 -->
+                <div class="glass-panel" style="width: 100%; padding: 0.6rem 1rem; text-align: center; border-color: rgba(244, 63, 94, 0.6); background: rgba(244, 63, 94, 0.12); box-shadow: 0 0 15px rgba(244, 63, 94, 0.1);">
+                    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.85rem;">
+                        <span style="font-weight: 600; color: var(--code-keyword);">Turn 3: History + Error Logs + Retries</span>
+                        <span style="font-weight: 800; color: var(--code-keyword);">35,000+ Tokens</span>
+                    </div>
+                </div>
+                <!-- Block 2 -->
+                <div class="glass-panel" style="width: 80%; padding: 0.6rem 1rem; text-align: center; border-color: rgba(251, 146, 60, 0.5); background: rgba(251, 146, 60, 0.08);">
+                    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.85rem;">
+                        <span style="font-weight: 600; color: var(--code-attr);">Turn 2: History + Compile Error</span>
+                        <span style="font-weight: 800; color: var(--code-attr);">22,000 Tokens</span>
+                    </div>
+                </div>
+                <!-- Block 1 -->
+                <div class="glass-panel" style="width: 60%; padding: 0.6rem 1rem; text-align: center; border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
+                    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.85rem;">
+                        <span style="font-weight: 600; color: var(--code-string);">Turn 1: Initial Prompt + Files</span>
+                        <span style="font-weight: 800; color: var(--code-string);">12,000 Tokens</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-color); background: rgba(99, 102, 241, 0.08); padding: 0.5rem; border-radius: 8px;">
+                Context grows exponentially. Billed per turn.
+            </div>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Talk through the two traps: 
+    1. Feedback Death Loop: Explain how the agent cycles repeatedly through writing code and encountering build errors, attempting guesses that can break other modules.
+    2. Context Snowball Effect: Emphasize that because LLM requests are stateless, every new retry includes the entire chat history and all build logs, meaning developers pay progressively more for every attempt.
+</div>

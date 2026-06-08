@@ -414,8 +414,115 @@
 <!-- END SLIDE: 11-planning-pitfall.html -->
 
 
-<!-- START SLIDE: 12-planning-paradox.html -->
-<section class="slide" id="slide-12-planning-paradox" data-transition="slide-horizontal">
+<!-- START SLIDE: 12-loop-snowball-visualization.html -->
+<section class="slide" id="slide-12-loop-snowball-visualization" data-transition="zoom">
+    <div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+        <span class="section-label">AI Pitfalls in Action</span>
+        <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Visualizing <span class="gradient-text">The Cost Traps</span></h2>
+    
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: stretch;">
+            <!-- Left Column: Feedback Death Loop -->
+            <div class="glass-panel hover-lift" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(244, 63, 94, 0.3);">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--code-keyword); display: flex; align-items: center; gap: 0.5rem;">
+                        <span>🔁</span> Feedback Death Loop
+                    </h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5;">
+                        The agent attempts to fix compiler errors blindly. Without a high-level plan, it edits code, triggers new errors, and ends up in an endless, expensive loop.
+                    </p>
+                </div>
+                
+                <!-- Loop Visualization Diagram -->
+                <div style="position: relative; height: 200px; display: flex; justify-content: center; align-items: center; margin: 1rem 0;">
+                    <!-- Center Accents -->
+                    <div style="position: absolute; width: 85px; height: 85px; border-radius: 50%; border: 2px dashed rgba(244, 63, 94, 0.4); display: flex; justify-content: center; align-items: center; background: rgba(244, 63, 94, 0.02);">
+                        <span style="font-size: 1.6rem; animation: pulse 2s ease-in-out infinite;">💸</span>
+                    </div>
+                    
+                    <!-- Step 1: Write -->
+                    <div style="position: absolute; top: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--code-string); font-family: var(--font-mono); font-size: 0.85rem; color: var(--code-string); font-weight: 600; z-index: 10;">
+                        1. Write Code
+                    </div>
+                    
+                    <!-- Step 2: Compile -->
+                    <div style="position: absolute; right: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; font-family: var(--font-mono); font-size: 0.85rem; color: #ef4444; font-weight: 600; z-index: 10;">
+                        2. Build Error
+                    </div>
+                    
+                    <!-- Step 3: Blind Fix -->
+                    <div style="position: absolute; bottom: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(251, 146, 60, 0.15); border: 1px solid var(--code-attr); font-family: var(--font-mono); font-size: 0.85rem; color: var(--code-attr); font-weight: 600; z-index: 10;">
+                        3. Blind Fix Attempt
+                    </div>
+                    
+                    <!-- Step 4: Break dependencies -->
+                    <div style="position: absolute; left: 0; padding: 0.5rem 1rem; border-radius: 12px; background: rgba(244, 63, 94, 0.15); border: 1px solid var(--code-keyword); font-family: var(--font-mono); font-size: 0.85rem; color: var(--code-keyword); font-weight: 600; z-index: 10;">
+                        4. Break Module
+                    </div>
+    
+                    <!-- Circular arrows svg overlay -->
+                    <svg style="position: absolute; width: 100%; height: 100%; pointer-events: none;" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(244, 63, 94, 0.2)" stroke-width="2" stroke-dasharray="6, 6" />
+                    </svg>
+                </div>
+                
+                <div style="text-align: center; font-family: var(--font-mono); font-size: 0.9rem; color: var(--code-keyword); background: rgba(244, 63, 94, 0.08); padding: 0.5rem; border-radius: 8px;">
+                    Loop continues indefinitely. Wastes time & money.
+                </div>
+            </div>
+    
+            <!-- Right Column: Context Snowball Effect -->
+            <div class="glass-panel hover-lift" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(99, 102, 241, 0.3);">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-color); display: flex; align-items: center; gap: 0.5rem;">
+                        <span>❄️</span> Context Snowball Effect
+                    </h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.5;">
+                        As the feedback loop runs, every compile error, terminal log, and retry code is appended to the prompt history. The input context grows larger with each turn.
+                    </p>
+                </div>
+                
+                <!-- Snowball Stacking Diagram -->
+                <div style="display: flex; flex-direction: column-reverse; gap: 0.5rem; align-items: center; margin: 1rem 0;">
+                    <!-- Block 3 -->
+                    <div class="glass-panel" style="width: 100%; padding: 0.6rem 1rem; text-align: center; border-color: rgba(244, 63, 94, 0.6); background: rgba(244, 63, 94, 0.12); box-shadow: 0 0 15px rgba(244, 63, 94, 0.1);">
+                        <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.85rem;">
+                            <span style="font-weight: 600; color: var(--code-keyword);">Turn 3: History + Error Logs + Retries</span>
+                            <span style="font-weight: 800; color: var(--code-keyword);">35,000+ Tokens</span>
+                        </div>
+                    </div>
+                    <!-- Block 2 -->
+                    <div class="glass-panel" style="width: 80%; padding: 0.6rem 1rem; text-align: center; border-color: rgba(251, 146, 60, 0.5); background: rgba(251, 146, 60, 0.08);">
+                        <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.85rem;">
+                            <span style="font-weight: 600; color: var(--code-attr);">Turn 2: History + Compile Error</span>
+                            <span style="font-weight: 800; color: var(--code-attr);">22,000 Tokens</span>
+                        </div>
+                    </div>
+                    <!-- Block 1 -->
+                    <div class="glass-panel" style="width: 60%; padding: 0.6rem 1rem; text-align: center; border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
+                        <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.85rem;">
+                            <span style="font-weight: 600; color: var(--code-string);">Turn 1: Initial Prompt + Files</span>
+                            <span style="font-weight: 800; color: var(--code-string);">12,000 Tokens</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-color); background: rgba(99, 102, 241, 0.08); padding: 0.5rem; border-radius: 8px;">
+                    Context grows exponentially. Billed per turn.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="notes">
+        Talk through the two traps: 
+        1. Feedback Death Loop: Explain how the agent cycles repeatedly through writing code and encountering build errors, attempting guesses that can break other modules.
+        2. Context Snowball Effect: Emphasize that because LLM requests are stateless, every new retry includes the entire chat history and all build logs, meaning developers pay progressively more for every attempt.
+    </div>
+</section>
+<!-- END SLIDE: 12-loop-snowball-visualization.html -->
+
+
+<!-- START SLIDE: 13-planning-paradox.html -->
+<section class="slide" id="slide-13-planning-paradox" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Optimization Mechanics</span>
@@ -439,11 +546,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 12-planning-paradox.html -->
+<!-- END SLIDE: 13-planning-paradox.html -->
 
 
-<!-- START SLIDE: 13-planning-tokens.html -->
-<section class="slide" id="slide-13-planning-tokens" data-transition="slide-vertical">
+<!-- START SLIDE: 14-planning-tokens.html -->
+<section class="slide" id="slide-14-planning-tokens" data-transition="slide-vertical">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Context Management</span>
@@ -467,11 +574,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 13-planning-tokens.html -->
+<!-- END SLIDE: 14-planning-tokens.html -->
 
 
-<!-- START SLIDE: 14-planning-calculation.html -->
-<section class="slide" id="slide-14-planning-calculation" data-transition="zoom">
+<!-- START SLIDE: 15-planning-calculation.html -->
+<section class="slide" id="slide-15-planning-calculation" data-transition="zoom">
     <div class="slide-content" style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Case Study Comparison</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">The Math: <span class="gradient-text">Spontaneous vs. Planned</span></h2>
@@ -523,11 +630,11 @@
         Review the math: Coding directly results in multiple compiler error loops and massive context snowballing. Planning first costs only a few tokens for text and results in a clean, one-shot code delivery.
     </div>
 </section>
-<!-- END SLIDE: 14-planning-calculation.html -->
+<!-- END SLIDE: 15-planning-calculation.html -->
 
 
-<!-- START SLIDE: 15-planning-summary.html -->
-<section class="slide" id="slide-15-planning-summary" data-transition="slide-horizontal">
+<!-- START SLIDE: 16-planning-summary.html -->
+<section class="slide" id="slide-16-planning-summary" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Summary</span>
@@ -551,11 +658,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 15-planning-summary.html -->
+<!-- END SLIDE: 16-planning-summary.html -->
 
 
-<!-- START SLIDE: 16-caveman-intro.html -->
-<section class="slide" id="slide-16-caveman-intro" data-transition="zoom">
+<!-- START SLIDE: 17-caveman-intro.html -->
+<section class="slide" id="slide-17-caveman-intro" data-transition="zoom">
     <div class="slide-content slide-layout-title">
         <div class="hero-glow"></div>
         <div class="title-header">
@@ -573,11 +680,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 16-caveman-intro.html -->
+<!-- END SLIDE: 17-caveman-intro.html -->
 
 
-<!-- START SLIDE: 17-caveman-architecture.html -->
-<section class="slide" id="slide-17-caveman-architecture" data-transition="slide-horizontal">
+<!-- START SLIDE: 18-caveman-architecture.html -->
+<section class="slide" id="slide-18-caveman-architecture" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Brevity Science</span>
@@ -601,11 +708,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 17-caveman-architecture.html -->
+<!-- END SLIDE: 18-caveman-architecture.html -->
 
 
-<!-- START SLIDE: 18-caveman-layers.html -->
-<section class="slide" id="slide-18-caveman-layers" data-transition="zoom">
+<!-- START SLIDE: 19-caveman-layers.html -->
+<section class="slide" id="slide-19-caveman-layers" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Brevity Comparison</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Output Comparison: React Re-render</h2>
@@ -651,11 +758,11 @@
         Show the before/after: Normal Claude explains in full conversational paragraphs. Caveman Claude gives the exact same advice in brief, actionable technical fragments, saving 72% of output tokens.
     </div>
 </section>
-<!-- END SLIDE: 18-caveman-layers.html -->
+<!-- END SLIDE: 19-caveman-layers.html -->
 
 
-<!-- START SLIDE: 19-caveman-memory.html -->
-<section class="slide" id="slide-19-caveman-memory" data-transition="zoom">
+<!-- START SLIDE: 20-caveman-memory.html -->
+<section class="slide" id="slide-20-caveman-memory" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Performance Metrics</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 0.5rem;">Claude API Benchmark <span class="gradient-text">Savings</span></h2>
@@ -725,11 +832,11 @@
         Present the benchmark figures: Caveman demonstrates an average of 65% output reduction across standard prompts (ranging from 22% on refactorings to 87% on explanations).
     </div>
 </section>
-<!-- END SLIDE: 19-caveman-memory.html -->
+<!-- END SLIDE: 20-caveman-memory.html -->
 
 
-<!-- START SLIDE: 20-caveman-trigger.html -->
-<section class="slide" id="slide-20-caveman-trigger" data-transition="slide-horizontal">
+<!-- START SLIDE: 21-caveman-trigger.html -->
+<section class="slide" id="slide-21-caveman-trigger" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-code">
         <div class="code-header">
             <span class="section-label">Skill Trigger</span>
@@ -751,11 +858,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 20-caveman-trigger.html -->
+<!-- END SLIDE: 21-caveman-trigger.html -->
 
 
-<!-- START SLIDE: 21-rtk-intro.html -->
-<section class="slide" id="slide-21-rtk-intro" data-transition="zoom">
+<!-- START SLIDE: 22-rtk-intro.html -->
+<section class="slide" id="slide-22-rtk-intro" data-transition="zoom">
     <div class="slide-content slide-layout-title">
         <div class="hero-glow"></div>
         <div class="title-header">
@@ -773,11 +880,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 21-rtk-intro.html -->
+<!-- END SLIDE: 22-rtk-intro.html -->
 
 
-<!-- START SLIDE: 22-rtk-benefits.html -->
-<section class="slide" id="slide-22-rtk-benefits" data-transition="slide-horizontal">
+<!-- START SLIDE: 23-rtk-benefits.html -->
+<section class="slide" id="slide-23-rtk-benefits" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Problem & Solution</span>
@@ -805,11 +912,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 22-rtk-benefits.html -->
+<!-- END SLIDE: 23-rtk-benefits.html -->
 
 
-<!-- START SLIDE: 23-rtk-hook-mechanism.html -->
-<section class="slide" id="slide-23-rtk-hook-mechanism" data-transition="slide-horizontal">
+<!-- START SLIDE: 24-rtk-hook-mechanism.html -->
+<section class="slide" id="slide-24-rtk-hook-mechanism" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-code">
         <div class="code-header">
             <span class="section-label">Hook Mechanics</span>
@@ -830,11 +937,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 23-rtk-hook-mechanism.html -->
+<!-- END SLIDE: 24-rtk-hook-mechanism.html -->
 
 
-<!-- START SLIDE: 24-rtk-read-compression.html -->
-<section class="slide" id="slide-24-rtk-read-compression" data-transition="zoom">
+<!-- START SLIDE: 25-rtk-read-compression.html -->
+<section class="slide" id="slide-25-rtk-read-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Files</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">JS File Read Signature Compression</h2>
@@ -896,11 +1003,11 @@
         Explain that if the agent only needs to locate function signatures and export contracts to understand how modules link, rtk read strips implementation details, saving 95% on tokens.
     </div>
 </section>
-<!-- END SLIDE: 24-rtk-read-compression.html -->
+<!-- END SLIDE: 25-rtk-read-compression.html -->
 
 
-<!-- START SLIDE: 25-rtk-diff-compression.html -->
-<section class="slide" id="slide-25-rtk-diff-compression" data-transition="zoom">
+<!-- START SLIDE: 26-rtk-diff-compression.html -->
+<section class="slide" id="slide-26-rtk-diff-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Git</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">JS Git Diff Compression</h2>
@@ -953,254 +1060,11 @@
         Explain diff compression: By stripping out surrounding context headers, git indexing logs, and collapsing large blocks of unchanged code, RTK isolates the exact modified lines to save 94% on diff payloads.
     </div>
 </section>
-<!-- END SLIDE: 25-rtk-diff-compression.html -->
+<!-- END SLIDE: 26-rtk-diff-compression.html -->
 
 
-<!-- START SLIDE: 26-rtk-status-compression.html -->
-<section class="slide" id="slide-26-rtk-status-compression" data-transition="zoom">
-    <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-        <span class="section-label">RTK in Action: Git</span>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Git Status Compression</h2>
-    
-        <!-- Side-by-Side Comparison Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-            
-            <!-- Left: Raw Result -->
-            <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
-                <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
-                    <span class="dot red"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw git status Output</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>On branch master
-    Your branch is up to date with 'origin/master'.
-    
-    Changes not staged for commit:
-      (use "git add &lt;file&gt;..." to update what will be committed)
-      (use "git restore &lt;file&gt;..." to discard changes in working directory)
-    	modified:   index.html
-    	modified:   src/main.rs
-    	modified:   src/config.rs
-    
-    Untracked files:
-      (use "git add &lt;file&gt;..." to include in what will be committed)
-    	.fastembed_cache/
-    	tests/
-    
-    no changes added to commit</code></pre>
-            </div>
-    
-            <!-- Right: RTK Result -->
-            <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
-                <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
-                    <span class="dot green"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk git status Output</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>* master...origin/master
-    ~ 3  index.html, src/main.rs, src/config.rs
-    ? 2  .fastembed_cache/, tests/</code></pre>
-            </div>
-    
-        </div>
-    
-        <!-- Bottom: Summary Banner -->
-        <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips help text and formats status into a single-line summary.</span>
-            <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
-                Raw: 120 ➔ RTK: 30 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 90 tokens (75%)</span>
-            </div>
-        </div>
-    </div>
-    <div class="notes">
-        Demos git status: Git outputs include a lot of interactive hint instructions (e.g. use "git add" to update). RTK filters these hints out, exposing only active modifications to the agent.
-    </div>
-</section>
-<!-- END SLIDE: 26-rtk-status-compression.html -->
-
-
-<!-- START SLIDE: 27-rtk-grep-compression.html -->
-<section class="slide" id="slide-27-rtk-grep-compression" data-transition="zoom">
-    <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-        <span class="section-label">RTK in Action: Search</span>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Grep Search Compression</h2>
-    
-        <!-- Side-by-Side Comparison Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-            
-            <!-- Left: Raw Result -->
-            <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
-                <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
-                    <span class="dot red"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw grep -rn Output</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>src/cargo_cmd.rs:17:pub fn run(cmd: CargoCommand, ...) -&gt; Result&lt;()&gt;
-    src/cargo_cmd.rs:551:pub fn run_passthrough(args: ...) -&gt; Result&lt;()&gt;
-    src/cc_economics.rs:184:pub fn run(...)
-    src/config.rs:73:    pub fn load() -&gt; Result&lt;Self&gt;
-    src/config.rs:85:    pub fn save(&amp;self) -&gt; Result&lt;()&gt;
-    src/config.rs:97:    pub fn create_default() -&gt; Result&lt;PathBuf&gt;</code></pre>
-            </div>
-    
-            <!-- Right: RTK Result -->
-            <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
-                <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
-                    <span class="dot green"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk grep Output</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>112 matches in 47 files:
-    
-    src/cargo_cmd.rs (3):
-        17: pub fn run(cmd: CargoCommand, ...) -&gt; Result&lt;()&gt;
-       551: pub fn run_passthrough(args: ...) -&gt; Result&lt;()&gt;
-    
-    src/config.rs (4):
-        73: pub fn load() -&gt; Result&lt;Self&gt;
-        85: pub fn save(&amp;self) -&gt; Result&lt;()&gt;</code></pre>
-            </div>
-    
-        </div>
-    
-        <!-- Bottom: Summary Banner -->
-        <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK groups matches under file headers, removing repeated paths from every line.</span>
-            <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
-                Raw: 2,108 ➔ RTK: 940 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 1,168 tokens (55%)</span>
-            </div>
-        </div>
-    </div>
-    <div class="notes">
-        Demos grep: Standard grep repeats the full absolute path of the file on every single matched line. RTK groups matches under distinct file blocks to clean up the formatting.
-    </div>
-</section>
-<!-- END SLIDE: 27-rtk-grep-compression.html -->
-
-
-<!-- START SLIDE: 28-rtk-ls-compression.html -->
-<section class="slide" id="slide-28-rtk-ls-compression" data-transition="zoom">
-    <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-        <span class="section-label">RTK in Action: Directory Discovery</span>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Directory Listing (ls) Compression</h2>
-    
-        <!-- Side-by-Side Comparison Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-            
-            <!-- Left: Raw Result -->
-            <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
-                <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
-                    <span class="dot red"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw ls -la src/</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>total 928
-    drwxr-xr-x  41 patrick  staff   1312 .
-    drwxr-xr-x  25 patrick  staff    800 ..
-    -rw-r--r--   1 patrick  staff  16394 cargo_cmd.rs
-    -rw-r--r--   1 patrick  staff  27220 cc_economics.rs
-    -rw-r--r--   1 patrick  staff   9503 ccusage.rs
-    -rw-r--r--   1 patrick  staff   2884 config.rs
-    -rw-r--r--   1 patrick  staff  12886 container.rs
-    -rw-r--r--   1 patrick  staff   3406 filter.rs</code></pre>
-            </div>
-    
-            <!-- Right: RTK Result -->
-            <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
-                <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
-                    <span class="dot green"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk ls src/ Output</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>discover/
-    parser/
-    cargo_cmd.rs  16.0K
-    cc_economics.rs  26.6K
-    ccusage.rs  9.3K
-    config.rs  2.8K
-    container.rs  12.6K
-    filter.rs  11.9K
-    
-    37 files, 2 dirs (37 .rs)</code></pre>
-            </div>
-    
-        </div>
-    
-        <!-- Bottom: Summary Banner -->
-        <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips file permissions, owners, and dates, showing only file names and sizes.</span>
-            <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
-                Raw: 3,200 ➔ RTK: 640 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 2,560 tokens (80%)</span>
-            </div>
-        </div>
-    </div>
-    <div class="notes">
-        Demos ls: Filesystem lists contain columns for permissions, link counts, owners, and dates. RTK ignores this data, keeping only file paths and sizes so the agent can quickly inspect modules.
-    </div>
-</section>
-<!-- END SLIDE: 28-rtk-ls-compression.html -->
-
-
-<!-- START SLIDE: 29-rtk-deps-compression.html -->
-<section class="slide" id="slide-29-rtk-deps-compression" data-transition="zoom">
-    <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-        <span class="section-label">RTK in Action: Dependencies</span>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Dependency File (package.json) Compression</h2>
-    
-        <!-- Side-by-Side Comparison Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-            
-            <!-- Left: Raw Result -->
-            <div class="glass-panel" style="border-color: rgba(244, 63, 94, 0.3);">
-                <div class="code-bar" style="background: rgba(244, 63, 94, 0.05);">
-                    <span class="dot red"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">Raw package.json</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>{
-      "name": "token-consumption",
-      "version": "1.0.0",
-      "description": "Token optimization demo",
-      "main": "index.js",
-      "scripts": {
-        "test": "jest",
-        "build": "vite build"
-      },
-      "dependencies": {
-        "express": "^4.19.2",
-        "jsonwebtoken": "^9.0.2",
-        "sqlite3": "^5.1.7",
-        "zod": "^3.23.8"
-      }
-    }</code></pre>
-            </div>
-    
-            <!-- Right: RTK Result -->
-            <div class="glass-panel" style="border-color: rgba(16, 185, 129, 0.3);">
-                <div class="code-bar" style="background: rgba(16, 185, 129, 0.05);">
-                    <span class="dot green"></span>
-                    <span class="file-name" style="color: var(--text-color); font-weight: 600;">rtk deps Output</span>
-                </div>
-                <pre style="font-size: 0.85rem; padding: 1rem; line-height: 1.4; max-height: 250px; overflow-y: auto;"><code>Node (package.json):
-      Dependencies (4):
-        express (4.19.2)
-        jsonwebtoken (9.0.2)
-        sqlite3 (5.1.7)
-        zod (3.23.8)</code></pre>
-            </div>
-    
-        </div>
-    
-        <!-- Bottom: Summary Banner -->
-        <div class="glass-panel" style="padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-color: var(--accent-border);">
-            <span style="font-size: 1.1rem; color: var(--text-muted);">RTK strips scripts and metadata formatting, keeping only dependency names and versions.</span>
-            <div style="font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">
-                Raw: 368 ➔ RTK: 55 tokens <span style="color: var(--code-string); margin-left: 1rem;">Saved: 313 tokens (85%)</span>
-            </div>
-        </div>
-    </div>
-    <div class="notes">
-        Demos dependencies: Packages files contain scripts, descriptions, licenses, and packaging specifications. RTK isolates only the package dependency names and versions for a compact payload.
-    </div>
-</section>
-<!-- END SLIDE: 29-rtk-deps-compression.html -->
-
-
-<!-- START SLIDE: 30-rtk-benchmarks.html -->
-<section class="slide" id="slide-30-rtk-benchmarks" data-transition="zoom">
+<!-- START SLIDE: 27-rtk-benchmarks.html -->
+<section class="slide" id="slide-27-rtk-benchmarks" data-transition="zoom">
     <div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Performance & Benchmarks</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 0.5rem;">RTK Token Savings <span class="gradient-text">Statistics</span></h2>
@@ -1256,11 +1120,11 @@
         Talk through the numbers: Point out that testing outputs are compressed by over 90% (e.g. pytest at 96% and cargo test at 91.8%) by stripping passing counts and retaining only failure logs. Highlight git diff (-94%) and the enormous community support (59.3k stars).
     </div>
 </section>
-<!-- END SLIDE: 30-rtk-benchmarks.html -->
+<!-- END SLIDE: 27-rtk-benchmarks.html -->
 
 
-<!-- START SLIDE: 31-conclusion.html -->
-<section class="slide" id="slide-31-conclusion" data-transition="zoom">
+<!-- START SLIDE: 28-conclusion.html -->
+<section class="slide" id="slide-28-conclusion" data-transition="zoom">
     <div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Summary</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Conclusion: <span class="gradient-text">Token-Optimized Coding</span></h2>
@@ -1311,7 +1175,7 @@
         4. Always write a blueprint plan first to keep agent context clean and isolated.
     </div>
 </section>
-<!-- END SLIDE: 31-conclusion.html -->
+<!-- END SLIDE: 28-conclusion.html -->
 
 
         </div>
