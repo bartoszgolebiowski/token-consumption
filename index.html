@@ -43,8 +43,8 @@
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem;">
                     <div class="card-icon" style="font-size: 1.5rem; margin-bottom: 0;">⚙️</div>
-                    <h3 style="font-size: 1.25rem;">Copilot Settings</h3>
-                    <p style="font-size: 1rem;">Saving tokens in GitHub Copilot.</p>
+                    <h3 style="font-size: 1.25rem;">Coding Agent Settings</h3>
+                    <p style="font-size: 1rem;">Saving tokens in a coding agent.</p>
                 </div>
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem;">
                     <div class="card-icon" style="font-size: 1.5rem; margin-bottom: 0;">🛠️</div>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="showcase-card glass-panel hover-lift">
                     <div class="card-icon">🔄</div>
-                    <h3>GitHub Copilot (Agent Mode)</h3>
+                    <h3>Coding Agent (Agent Mode)</h3>
                     <p><strong>Autonomous Loops:</strong> Reason-Act-Observe cycle. Runs in the background to execute plans, check logs, and run code, rebuilding context.</p>
                 </div>
             </div>
@@ -88,36 +88,8 @@
 <!-- END SLIDE: 03-architecture.html -->
 
 
-<!-- START SLIDE: 04-agent-loop.html -->
-<section class="slide" id="slide-04-agent-loop" data-transition="slide-vertical">
-    <div class="slide-content slide-layout-split">
-        <div class="column-left">
-            <span class="section-label">Deep Dive</span>
-            <h2>The ReAct Loop <span class="gradient-text">Multiplier</span></h2>
-            <p class="desc-text">Why does Agent Mode consume so many tokens? Because prompts are rebuilt in the background.</p>
-        </div>
-        <div class="column-right">
-            <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
-                <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
-                    <h3>🔁 Repeated Context Reading</h3>
-                    <p>Every loop iteration forces the model to reread the entire context: the task, previous steps, and tool logs.</p>
-                </div>
-                <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
-                    <h3>📂 Independent File Reading</h3>
-                    <p>The agent can read up to 5 additional files without your knowledge to locate relevant information.</p>
-                </div>
-            </div>
-        </div>
-        <div class="notes">
-            Explain context accumulation and "puffing". This is why a simple one-line prompt to an agent can turn into a 100k token execution if it starts reading multiple files and logs in a loop.
-        </div>
-    </div>
-</section>
-<!-- END SLIDE: 04-agent-loop.html -->
-
-
-<!-- START SLIDE: 04b-chat-visualization.html -->
-<section class="slide" id="slide-04b-chat-visualization" data-transition="zoom">
+<!-- START SLIDE: 04-chat-visualization.html -->
+<section class="slide" id="slide-04-chat-visualization" data-transition="zoom">
     <div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Visualizing Token Accumulation</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Classic Chat: <span class="gradient-text">Single Transaction</span></h2>
@@ -155,11 +127,39 @@
         Explain that this is the baseline. When a user submits a prompt, it's a static transaction. There is no automated background work, meaning token spend stops immediately after the response is generated.
     </div>
 </section>
-<!-- END SLIDE: 04b-chat-visualization.html -->
+<!-- END SLIDE: 04-chat-visualization.html -->
 
 
-<!-- START SLIDE: 05-loop-visualization.html -->
-<section class="slide" id="slide-05-loop-visualization" data-transition="zoom">
+<!-- START SLIDE: 05-agent-loop.html -->
+<section class="slide" id="slide-05-agent-loop" data-transition="slide-vertical">
+    <div class="slide-content slide-layout-split">
+        <div class="column-left">
+            <span class="section-label">Deep Dive</span>
+            <h2>The ReAct Loop <span class="gradient-text">Multiplier</span></h2>
+            <p class="desc-text">Why does Agent Mode consume so many tokens? Because prompts are rebuilt in the background.</p>
+        </div>
+        <div class="column-right">
+            <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
+                    <h3>🔁 Repeated Context Reading</h3>
+                    <p>Every loop iteration forces the model to reread the entire context: the task, previous steps, and tool logs.</p>
+                </div>
+                <div class="showcase-card glass-panel hover-lift" style="padding: 1.5rem 2rem;">
+                    <h3>📂 Independent File Reading</h3>
+                    <p>The agent can read up to 5 additional files without your knowledge to locate relevant information.</p>
+                </div>
+            </div>
+        </div>
+        <div class="notes">
+            Explain context accumulation and "puffing". This is why a simple one-line prompt to an agent can turn into a 100k token execution if it starts reading multiple files and logs in a loop.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 05-agent-loop.html -->
+
+
+<!-- START SLIDE: 06-loop-visualization.html -->
+<section class="slide" id="slide-06-loop-visualization" data-transition="zoom">
     <div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Visualizing Token Accumulation</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Context Inflation: <span class="gradient-text">How Costs Accumulate</span></h2>
@@ -221,11 +221,11 @@
         Explain that this diagram visualizes context compounding. At Loop 10, the developer is paying for Loop 1, 2, 3... all the way to 10 combined, because LLMs are stateless and every action requires sending the full history back.
     </div>
 </section>
-<!-- END SLIDE: 05-loop-visualization.html -->
+<!-- END SLIDE: 06-loop-visualization.html -->
 
 
-<!-- START SLIDE: 06-copilot-base.html -->
-<section class="slide" id="slide-06-copilot-base" data-transition="slide-horizontal">
+<!-- START SLIDE: 07-copilot-base.html -->
+<section class="slide" id="slide-07-copilot-base" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">GitHub Copilot</span>
@@ -255,11 +255,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 06-copilot-base.html -->
+<!-- END SLIDE: 07-copilot-base.html -->
 
 
-<!-- START SLIDE: 07-mcp-overhead.html -->
-<section class="slide" id="slide-07-mcp-overhead" data-transition="slide-vertical">
+<!-- START SLIDE: 08-mcp-overhead.html -->
+<section class="slide" id="slide-08-mcp-overhead" data-transition="slide-vertical">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Extensibility</span>
@@ -270,7 +270,7 @@
             <div class="showcase-grid" style="grid-template-columns: 1fr; gap: 1rem;">
                 <div class="showcase-card glass-panel hover-lift" style="padding: 1.25rem 2rem; border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.05);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                        <h3 style="font-size: 1.25rem;">🤖 Copilot Agent Base</h3>
+                        <h3 style="font-size: 1.25rem;">🤖 Coding Agent Base</h3>
                         <span style="font-family: var(--font-mono); color: var(--accent-color); font-weight: 800;">18,000 Tokens</span>
                     </div>
                     <p style="font-size: 0.95rem;">Base system prompt for planning and boundaries.</p>
@@ -288,15 +288,15 @@
             </div>
         </div>
         <div class="notes">
-            Explain that the 18k base from Copilot is just the starting point. When you load complex MCP tools like Jupyter or database connectors, their schemas inject an extra 0-10k+ tokens into the system prompt, inflating the initial payload.
+            Explain that the 18k base from the coding agent is just the starting point. When you load complex MCP tools like Jupyter or database connectors, their schemas inject an extra 0-10k+ tokens into the system prompt, inflating the initial payload.
         </div>
     </div>
 </section>
-<!-- END SLIDE: 07-mcp-overhead.html -->
+<!-- END SLIDE: 08-mcp-overhead.html -->
 
 
-<!-- START SLIDE: 08-agent-skills.html -->
-<section class="slide" id="slide-08-agent-skills" data-transition="slide-horizontal">
+<!-- START SLIDE: 09-agent-skills.html -->
+<section class="slide" id="slide-09-agent-skills" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-code">
         <div class="code-header">
             <span class="section-label">Optimization Alternative</span>
@@ -329,11 +329,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08-agent-skills.html -->
+<!-- END SLIDE: 09-agent-skills.html -->
 
 
-<!-- START SLIDE: 08a1-planning-title.html -->
-<section class="slide" id="slide-08a1-planning-title" data-transition="zoom">
+<!-- START SLIDE: 10-planning-title.html -->
+<section class="slide" id="slide-10-planning-title" data-transition="zoom">
     <div class="slide-content slide-layout-title">
         <div class="hero-glow"></div>
         <div class="title-header">
@@ -351,11 +351,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08a1-planning-title.html -->
+<!-- END SLIDE: 10-planning-title.html -->
 
 
-<!-- START SLIDE: 08a2-planning-pitfall.html -->
-<section class="slide" id="slide-08a2-planning-pitfall" data-transition="slide-horizontal">
+<!-- START SLIDE: 11-planning-pitfall.html -->
+<section class="slide" id="slide-11-planning-pitfall" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
           <span class="section-label">Pitfalls</span>
@@ -411,11 +411,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08a2-planning-pitfall.html -->
+<!-- END SLIDE: 11-planning-pitfall.html -->
 
 
-<!-- START SLIDE: 08a3-planning-paradox.html -->
-<section class="slide" id="slide-08a3-planning-paradox" data-transition="slide-horizontal">
+<!-- START SLIDE: 12-planning-paradox.html -->
+<section class="slide" id="slide-12-planning-paradox" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Optimization Mechanics</span>
@@ -439,11 +439,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08a3-planning-paradox.html -->
+<!-- END SLIDE: 12-planning-paradox.html -->
 
 
-<!-- START SLIDE: 08a4-planning-tokens.html -->
-<section class="slide" id="slide-08a4-planning-tokens" data-transition="slide-vertical">
+<!-- START SLIDE: 13-planning-tokens.html -->
+<section class="slide" id="slide-13-planning-tokens" data-transition="slide-vertical">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Context Management</span>
@@ -467,11 +467,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08a4-planning-tokens.html -->
+<!-- END SLIDE: 13-planning-tokens.html -->
 
 
-<!-- START SLIDE: 08a5-planning-calculation.html -->
-<section class="slide" id="slide-08a5-planning-calculation" data-transition="zoom">
+<!-- START SLIDE: 14-planning-calculation.html -->
+<section class="slide" id="slide-14-planning-calculation" data-transition="zoom">
     <div class="slide-content" style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Case Study Comparison</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">The Math: <span class="gradient-text">Spontaneous vs. Planned</span></h2>
@@ -523,11 +523,11 @@
         Review the math: Coding directly results in multiple compiler error loops and massive context snowballing. Planning first costs only a few tokens for text and results in a clean, one-shot code delivery.
     </div>
 </section>
-<!-- END SLIDE: 08a5-planning-calculation.html -->
+<!-- END SLIDE: 14-planning-calculation.html -->
 
 
-<!-- START SLIDE: 08a6-planning-summary.html -->
-<section class="slide" id="slide-08a6-planning-summary" data-transition="slide-horizontal">
+<!-- START SLIDE: 15-planning-summary.html -->
+<section class="slide" id="slide-15-planning-summary" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Summary</span>
@@ -551,11 +551,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08a6-planning-summary.html -->
+<!-- END SLIDE: 15-planning-summary.html -->
 
 
-<!-- START SLIDE: 08b-caveman-intro.html -->
-<section class="slide" id="slide-08b-caveman-intro" data-transition="zoom">
+<!-- START SLIDE: 16-caveman-intro.html -->
+<section class="slide" id="slide-16-caveman-intro" data-transition="zoom">
     <div class="slide-content slide-layout-title">
         <div class="hero-glow"></div>
         <div class="title-header">
@@ -569,15 +569,15 @@
             <span class="date">MIT License</span>
         </div>
         <div class="notes">
-            Introduce the Caveman skill: a developer plugin (available for Claude Code, Cursor, Cline, Copilot, etc.) that forces the model to drop conversational filler and write concise, high-density technical responses.
+            Introduce the Caveman skill: a developer plugin (available for Claude Code, Cursor, Cline, coding agents, etc.) that forces the model to drop conversational filler and write concise, high-density technical responses.
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08b-caveman-intro.html -->
+<!-- END SLIDE: 16-caveman-intro.html -->
 
 
-<!-- START SLIDE: 08c-caveman-architecture.html -->
-<section class="slide" id="slide-08c-caveman-architecture" data-transition="slide-horizontal">
+<!-- START SLIDE: 17-caveman-architecture.html -->
+<section class="slide" id="slide-17-caveman-architecture" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Brevity Science</span>
@@ -601,11 +601,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08c-caveman-architecture.html -->
+<!-- END SLIDE: 17-caveman-architecture.html -->
 
 
-<!-- START SLIDE: 08d-caveman-layers.html -->
-<section class="slide" id="slide-08d-caveman-layers" data-transition="zoom">
+<!-- START SLIDE: 18-caveman-layers.html -->
+<section class="slide" id="slide-18-caveman-layers" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Brevity Comparison</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Output Comparison: React Re-render</h2>
@@ -651,11 +651,11 @@
         Show the before/after: Normal Claude explains in full conversational paragraphs. Caveman Claude gives the exact same advice in brief, actionable technical fragments, saving 72% of output tokens.
     </div>
 </section>
-<!-- END SLIDE: 08d-caveman-layers.html -->
+<!-- END SLIDE: 18-caveman-layers.html -->
 
 
-<!-- START SLIDE: 08e-caveman-memory.html -->
-<section class="slide" id="slide-08e-caveman-memory" data-transition="zoom">
+<!-- START SLIDE: 19-caveman-memory.html -->
+<section class="slide" id="slide-19-caveman-memory" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Performance Metrics</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 0.5rem;">Claude API Benchmark <span class="gradient-text">Savings</span></h2>
@@ -725,11 +725,11 @@
         Present the benchmark figures: Caveman demonstrates an average of 65% output reduction across standard prompts (ranging from 22% on refactorings to 87% on explanations).
     </div>
 </section>
-<!-- END SLIDE: 08e-caveman-memory.html -->
+<!-- END SLIDE: 19-caveman-memory.html -->
 
 
-<!-- START SLIDE: 08f-caveman-trigger.html -->
-<section class="slide" id="slide-08f-caveman-trigger" data-transition="slide-horizontal">
+<!-- START SLIDE: 20-caveman-trigger.html -->
+<section class="slide" id="slide-20-caveman-trigger" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-code">
         <div class="code-header">
             <span class="section-label">Skill Trigger</span>
@@ -751,11 +751,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 08f-caveman-trigger.html -->
+<!-- END SLIDE: 20-caveman-trigger.html -->
 
 
-<!-- START SLIDE: 09-rtk-intro.html -->
-<section class="slide" id="slide-09-rtk-intro" data-transition="zoom">
+<!-- START SLIDE: 21-rtk-intro.html -->
+<section class="slide" id="slide-21-rtk-intro" data-transition="zoom">
     <div class="slide-content slide-layout-title">
         <div class="hero-glow"></div>
         <div class="title-header">
@@ -773,11 +773,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 09-rtk-intro.html -->
+<!-- END SLIDE: 21-rtk-intro.html -->
 
 
-<!-- START SLIDE: 10-rtk-benefits.html -->
-<section class="slide" id="slide-10-rtk-benefits" data-transition="slide-horizontal">
+<!-- START SLIDE: 22-rtk-benefits.html -->
+<section class="slide" id="slide-22-rtk-benefits" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
         <div class="column-left">
             <span class="section-label">Problem & Solution</span>
@@ -805,11 +805,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 10-rtk-benefits.html -->
+<!-- END SLIDE: 22-rtk-benefits.html -->
 
 
-<!-- START SLIDE: 10b-rtk-hook-mechanism.html -->
-<section class="slide" id="slide-10b-rtk-hook-mechanism" data-transition="slide-horizontal">
+<!-- START SLIDE: 23-rtk-hook-mechanism.html -->
+<section class="slide" id="slide-23-rtk-hook-mechanism" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-code">
         <div class="code-header">
             <span class="section-label">Hook Mechanics</span>
@@ -830,11 +830,11 @@
         </div>
     </div>
 </section>
-<!-- END SLIDE: 10b-rtk-hook-mechanism.html -->
+<!-- END SLIDE: 23-rtk-hook-mechanism.html -->
 
 
-<!-- START SLIDE: 12b-rtk-read-compression.html -->
-<section class="slide" id="slide-12b-rtk-read-compression" data-transition="zoom">
+<!-- START SLIDE: 24-rtk-read-compression.html -->
+<section class="slide" id="slide-24-rtk-read-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Files</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">JS File Read Signature Compression</h2>
@@ -896,11 +896,11 @@
         Explain that if the agent only needs to locate function signatures and export contracts to understand how modules link, rtk read strips implementation details, saving 95% on tokens.
     </div>
 </section>
-<!-- END SLIDE: 12b-rtk-read-compression.html -->
+<!-- END SLIDE: 24-rtk-read-compression.html -->
 
 
-<!-- START SLIDE: 12c-rtk-diff-compression.html -->
-<section class="slide" id="slide-12c-rtk-diff-compression" data-transition="zoom">
+<!-- START SLIDE: 25-rtk-diff-compression.html -->
+<section class="slide" id="slide-25-rtk-diff-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Git</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">JS Git Diff Compression</h2>
@@ -953,11 +953,11 @@
         Explain diff compression: By stripping out surrounding context headers, git indexing logs, and collapsing large blocks of unchanged code, RTK isolates the exact modified lines to save 94% on diff payloads.
     </div>
 </section>
-<!-- END SLIDE: 12c-rtk-diff-compression.html -->
+<!-- END SLIDE: 25-rtk-diff-compression.html -->
 
 
-<!-- START SLIDE: 12e-rtk-status-compression.html -->
-<section class="slide" id="slide-12e-rtk-status-compression" data-transition="zoom">
+<!-- START SLIDE: 26-rtk-status-compression.html -->
+<section class="slide" id="slide-26-rtk-status-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Git</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Git Status Compression</h2>
@@ -1014,11 +1014,11 @@
         Demos git status: Git outputs include a lot of interactive hint instructions (e.g. use "git add" to update). RTK filters these hints out, exposing only active modifications to the agent.
     </div>
 </section>
-<!-- END SLIDE: 12e-rtk-status-compression.html -->
+<!-- END SLIDE: 26-rtk-status-compression.html -->
 
 
-<!-- START SLIDE: 12f-rtk-grep-compression.html -->
-<section class="slide" id="slide-12f-rtk-grep-compression" data-transition="zoom">
+<!-- START SLIDE: 27-rtk-grep-compression.html -->
+<section class="slide" id="slide-27-rtk-grep-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Search</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Grep Search Compression</h2>
@@ -1071,11 +1071,11 @@
         Demos grep: Standard grep repeats the full absolute path of the file on every single matched line. RTK groups matches under distinct file blocks to clean up the formatting.
     </div>
 </section>
-<!-- END SLIDE: 12f-rtk-grep-compression.html -->
+<!-- END SLIDE: 27-rtk-grep-compression.html -->
 
 
-<!-- START SLIDE: 12g-rtk-ls-compression.html -->
-<section class="slide" id="slide-12g-rtk-ls-compression" data-transition="zoom">
+<!-- START SLIDE: 28-rtk-ls-compression.html -->
+<section class="slide" id="slide-28-rtk-ls-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Directory Discovery</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Directory Listing (ls) Compression</h2>
@@ -1132,11 +1132,11 @@
         Demos ls: Filesystem lists contain columns for permissions, link counts, owners, and dates. RTK ignores this data, keeping only file paths and sizes so the agent can quickly inspect modules.
     </div>
 </section>
-<!-- END SLIDE: 12g-rtk-ls-compression.html -->
+<!-- END SLIDE: 28-rtk-ls-compression.html -->
 
 
-<!-- START SLIDE: 12h-rtk-deps-compression.html -->
-<section class="slide" id="slide-12h-rtk-deps-compression" data-transition="zoom">
+<!-- START SLIDE: 29-rtk-deps-compression.html -->
+<section class="slide" id="slide-29-rtk-deps-compression" data-transition="zoom">
     <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">RTK in Action: Dependencies</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Dependency File (package.json) Compression</h2>
@@ -1196,11 +1196,11 @@
         Demos dependencies: Packages files contain scripts, descriptions, licenses, and packaging specifications. RTK isolates only the package dependency names and versions for a compact payload.
     </div>
 </section>
-<!-- END SLIDE: 12h-rtk-deps-compression.html -->
+<!-- END SLIDE: 29-rtk-deps-compression.html -->
 
 
-<!-- START SLIDE: 13-rtk-benchmarks.html -->
-<section class="slide" id="slide-13-rtk-benchmarks" data-transition="zoom">
+<!-- START SLIDE: 30-rtk-benchmarks.html -->
+<section class="slide" id="slide-30-rtk-benchmarks" data-transition="zoom">
     <div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Performance & Benchmarks</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 0.5rem;">RTK Token Savings <span class="gradient-text">Statistics</span></h2>
@@ -1256,11 +1256,11 @@
         Talk through the numbers: Point out that testing outputs are compressed by over 90% (e.g. pytest at 96% and cargo test at 91.8%) by stripping passing counts and retaining only failure logs. Highlight git diff (-94%) and the enormous community support (59.3k stars).
     </div>
 </section>
-<!-- END SLIDE: 13-rtk-benchmarks.html -->
+<!-- END SLIDE: 30-rtk-benchmarks.html -->
 
 
-<!-- START SLIDE: 14-conclusion.html -->
-<section class="slide" id="slide-14-conclusion" data-transition="zoom">
+<!-- START SLIDE: 31-conclusion.html -->
+<section class="slide" id="slide-31-conclusion" data-transition="zoom">
     <div class="slide-content" style="max-width: 1150px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
         <span class="section-label">Summary</span>
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Conclusion: <span class="gradient-text">Token-Optimized Coding</span></h2>
@@ -1311,7 +1311,7 @@
         4. Always write a blueprint plan first to keep agent context clean and isolated.
     </div>
 </section>
-<!-- END SLIDE: 14-conclusion.html -->
+<!-- END SLIDE: 31-conclusion.html -->
 
 
         </div>
@@ -1325,9 +1325,9 @@
             
             <!-- Slide Indicator -->
             <div class="slide-counter glass-panel" id="slide-indicator">
-                <span id="current-slide-num">1</span>
+                <span id="current-slide-num">01</span>
                 <span class="counter-divider">/</span>
-                <span id="total-slides-num">1</span>
+                <span id="total-slides-num">01</span>
             </div>
 
             <!-- Right Navigation -->

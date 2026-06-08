@@ -43,7 +43,7 @@ class PresentationEngine {
         // Auto-detect total slides
         this.totalSlides = this.slides.length;
         if (this.indicatorTotal) {
-            this.indicatorTotal.textContent = this.totalSlides;
+            this.indicatorTotal.textContent = String(this.totalSlides).padStart(2, '0');
         }
 
         this.init();
@@ -248,7 +248,7 @@ class PresentationEngine {
 
         // Update indicators
         if (this.indicatorCurrent) {
-            this.indicatorCurrent.textContent = this.currentIndex + 1;
+            this.indicatorCurrent.textContent = String(this.currentIndex + 1).padStart(2, '0');
         }
 
         // Update URL hash without breaking history back-forward
