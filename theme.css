@@ -5,23 +5,23 @@
 
 /* 1. Theme: Glass Dark (Default Preset) */
 .theme-glass-dark {
-    --bg-color: #0b0f19;
-    --bg-gradient: radial-gradient(circle at 50% 50%, #151b2e 0%, #080c14 100%);
-    --text-color: #f1f5f9;
-    --text-muted: #94a3b8;
-    --accent-color: #6366f1;
-    --accent-glow: rgba(99, 102, 241, 0.5);
-    --gradient-1: #6366f1;
-    --gradient-2: #ec4899;
-    --glass-bg: rgba(21, 27, 46, 0.5);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-highlight: rgba(255, 255, 255, 0.03);
+    --bg-color: #0e0511;
+    --bg-gradient: radial-gradient(circle at 50% 50%, #170d1e 0%, #060207 100%);
+    --text-color: #ffffff;
+    --text-muted: #d9d9d9;
+    --accent-color: #7b2d85;
+    --accent-glow: rgba(123, 45, 133, 0.4);
+    --gradient-1: #7b2d85;
+    --gradient-2: #d03a8c;
+    --glass-bg: rgba(23, 13, 30, 0.5);
+    --glass-border: rgba(236, 211, 237, 0.1);
+    --glass-highlight: rgba(236, 211, 237, 0.03);
     --panel-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --code-keyword: #f43f5e;
-    --code-string: #10b981;
-    --code-tag: #3b82f6;
-    --code-attr: #fb923c;
-    --card-glow: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 60%);
+    --code-keyword: #d03a8c;
+    --code-string: #64b237;
+    --code-tag: #7b2d85;
+    --code-attr: #ecd3ed;
+    --card-glow: radial-gradient(circle at top right, rgba(123, 45, 133, 0.15), transparent 60%);
 }
 
 /* 2. Theme: Cyberpunk Neon */

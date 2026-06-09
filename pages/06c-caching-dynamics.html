@@ -1,0 +1,52 @@
+<!-- transition: slide-horizontal, layout: slide-layout-split -->
+<div class="column-left">
+    <span class="section-label">Cache Dynamics</span>
+    <h2>Managing Cache <span class="gradient-text">TTL & Structure</span></h2>
+    
+    <div class="showcase-card glass-panel" style="padding: 1.25rem; margin-top: 1rem; border-color: rgba(251, 146, 60, 0.3); background: rgba(251, 146, 60, 0.03);">
+        <h3 style="font-size: 1.2rem; color: var(--code-attr); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>⏱️</span> The 5-Minute Rule
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.4; margin-bottom: 0.5rem;">
+            Caches persist using a sliding <strong>5-to-10 minute TTL</strong> window:
+        </p>
+        <ul style="font-size: 0.85rem; padding-left: 1.2rem; line-height: 1.4; opacity: 0.9;">
+            <li><strong>Hot Cache:</strong> Active agent turns maintain the 90% discount.</li>
+            <li><strong>Cold Start:</strong> Idle sessions expire, requiring a full-price re-warm.</li>
+        </ul>
+    </div>
+</div>
+<div class="column-right">
+    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--accent-color); font-family: var(--font-heading);">
+        Avoiding Cache Busts
+    </h3>
+    
+    <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+        <!-- Rule 1: Order -->
+        <div class="glass-panel" style="padding: 0.75rem 1rem; border-color: rgba(255, 255, 255, 0.1);">
+            <h4 style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 0.15rem;">1. Prefix Match Ordering</h4>
+            <p style="font-size: 0.8rem; opacity: 0.8; line-height: 1.3;">
+                Caches match from the start. Put static system prompts and files first; put dynamic inputs (queries, timestamps) last.
+            </p>
+        </div>
+
+        <!-- Rule 2: Minimum Sizes -->
+        <div class="glass-panel" style="padding: 0.75rem 1rem; border-color: rgba(255, 255, 255, 0.1);">
+            <h4 style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 0.15rem;">2. Size Thresholds</h4>
+            <p style="font-size: 0.8rem; opacity: 0.8; line-height: 1.3;">
+                Requires minimum prompt overhead to trigger caching (e.g., 1,024 tokens for Anthropic).
+            </p>
+        </div>
+
+        <!-- Rule 3: Deterministic tool outputs -->
+        <div class="glass-panel" style="padding: 0.75rem 1rem; border-color: rgba(255, 255, 255, 0.1);">
+            <h4 style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 0.15rem;">3. Deterministic Structure</h4>
+            <p style="font-size: 0.8rem; opacity: 0.8; line-height: 1.3;">
+                Keep tool output keys, logs, and files in a fixed order. Shuffling order breaks the cache.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="notes">
+    Explain the sliding TTL window (5-minute rule). Emphasize three cache bust triggers: prefix ordering mismatch, under-threshold size, and non-deterministic shuffles.
+</div>

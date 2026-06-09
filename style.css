@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap');
+
 /* ==========================================================================
    ANTIGRAVITY DECK - DESIGN SYSTEM & PRESETS
    ========================================================================== */
@@ -7,8 +9,8 @@
     --transition-speed-fast: 0.2s;
     --transition-speed-normal: 0.4s;
     --transition-speed-slow: 0.8s;
-    --font-primary: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --font-heading: 'Outfit', sans-serif;
+    --font-primary: 'Arial', sans-serif;
+    --font-heading: 'Montserrat', 'Arial', sans-serif;
     --font-mono: 'Fira Code', monospace;
     --border-radius-sm: 8px;
     --border-radius-md: 16px;

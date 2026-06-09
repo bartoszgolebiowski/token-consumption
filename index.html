@@ -224,6 +224,229 @@
 <!-- END SLIDE: 06-loop-visualization.html -->
 
 
+<!-- START SLIDE: 06b-caching-pricing.html -->
+<section class="slide" id="slide-06b-caching-pricing" data-transition="slide-horizontal">
+    <div class="slide-content" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+        <span class="section-label">Unit Economics</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">LLM Pricing & <span class="gradient-text">The Caching Discount</span></h2>
+    
+        <div style="display: grid; grid-template-columns: 1.35fr 1fr; gap: 2.5rem; align-items: stretch;">
+            <!-- Left: Pricing Table -->
+            <div class="glass-panel" style="padding: 1.5rem; border-color: rgba(255, 255, 255, 0.1);">
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--accent-color); font-family: var(--font-heading);">LLM API Pricing Table (June 2026)</h3>
+                
+                <style>
+                    .pricing-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 0.8rem;
+                    }
+                    .pricing-table th {
+                        background: rgba(255, 255, 255, 0.04);
+                        color: var(--accent-color);
+                        font-family: var(--font-heading);
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        font-size: 0.75rem;
+                        letter-spacing: 0.05em;
+                    }
+                    .pricing-table th, .pricing-table td {
+                        padding: 0.5rem 0.75rem;
+                        text-align: left;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                    }
+                    .pricing-table tr:hover {
+                        background: rgba(255, 255, 255, 0.02);
+                    }
+                    .price-mono {
+                        font-family: var(--font-mono);
+                        font-weight: 600;
+                    }
+                    .provider-badge {
+                        font-size: 0.75rem;
+                        padding: 0.15rem 0.35rem;
+                        border-radius: 4px;
+                        font-weight: 700;
+                    }
+                    .provider-anthropic { background: rgba(249, 115, 22, 0.15); color: #f97316; }
+                    .provider-openai { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+                    .provider-google { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+                </style>
+    
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th>Model</th>
+                            <th>Input / 1M</th>
+                            <th>Cached Input / 1M</th>
+                            <th>Output / 1M</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+                            <td>Claude Haiku 4.5</td>
+                            <td class="price-mono">$1.00</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.10</td>
+                            <td class="price-mono">$5.00</td>
+                        </tr>
+                        <tr style="background: rgba(99, 102, 241, 0.04);">
+                            <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+                            <td><strong>Claude Sonnet 4.6</strong></td>
+                            <td class="price-mono">$3.00</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.30</td>
+                            <td class="price-mono">$15.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="provider-badge provider-anthropic">Anthropic</span></td>
+                            <td>Claude Opus 4.8</td>
+                            <td class="price-mono">$5.00</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.50</td>
+                            <td class="price-mono">$25.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="provider-badge provider-openai">OpenAI</span></td>
+                            <td>GPT-5.5 (Frontier)</td>
+                            <td class="price-mono">$5.00</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.50</td>
+                            <td class="price-mono">$30.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="provider-badge provider-openai">OpenAI</span></td>
+                            <td>GPT-5.4 (Standard)</td>
+                            <td class="price-mono">$2.50</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.25</td>
+                            <td class="price-mono">$15.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="provider-badge provider-openai">OpenAI</span></td>
+                            <td>GPT-5.4 Mini</td>
+                            <td class="price-mono">$0.75</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.075</td>
+                            <td class="price-mono">$4.50</td>
+                        </tr>
+                        <tr>
+                            <td><span class="provider-badge provider-openai">OpenAI</span></td>
+                            <td>GPT-5.3 Codex</td>
+                            <td class="price-mono">$2.50</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.25</td>
+                            <td class="price-mono">$15.00</td>
+                        </tr>
+                        <tr>
+                            <td><span class="provider-badge provider-google">Google</span></td>
+                            <td>Gemini 3.5 Flash</td>
+                            <td class="price-mono">$1.50</td>
+                            <td class="price-mono" style="color: var(--code-string); font-weight: 800;">$0.15</td>
+                            <td class="price-mono">$9.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <!-- Right: Case Study / Why it Matters -->
+            <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+                <div class="glass-panel" style="padding: 1.5rem; flex-grow: 1; border-color: rgba(99, 102, 241, 0.25);">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--code-string); font-family: var(--font-heading);">
+                        Why the 90% Drop Matters
+                    </h3>
+                    <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-color); opacity: 0.9; margin-bottom: 1rem;">
+                        For an autonomous coding agent executing a feedback loop against a <strong>100,000 token context</strong> (codebase map, open files, logs) using <strong>Claude 4.6 Sonnet</strong>:
+                    </p>
+    
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <!-- Without Cache -->
+                        <div style="padding: 0.75rem 1rem; border-radius: 8px; background: rgba(244, 63, 94, 0.06); border: 1px solid rgba(244, 63, 94, 0.2);">
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--code-keyword);">
+                                <span>❌ Without Caching</span>
+                                <span>$0.30 / turn</span>
+                            </div>
+                            <p style="font-size: 0.75rem; color: var(--text-color); opacity: 0.7; margin-top: 0.2rem;">Every single turn bills the full 100k input context from scratch.</p>
+                        </div>
+    
+                        <!-- With Cache -->
+                        <div style="padding: 0.75rem 1rem; border-radius: 8px; background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2);">
+                            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--code-string);">
+                                <span>✨ With Caching</span>
+                                <span>$0.03 / turn</span>
+                            </div>
+                            <p style="font-size: 0.75rem; color: var(--text-color); opacity: 0.7; margin-top: 0.2rem;">The 100k prefix is cached. You only pay full price for the tiny delta.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="glass-panel" style="padding: 1rem; text-align: center; font-family: var(--font-mono); font-size: 0.85rem; color: var(--code-string); background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">
+                    <strong>90% Cost Reduction</strong> flatlines the Agentic Cost Traps.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="notes">
+        Highlight the pricing table for June 2026. Point out that for all three top providers (Anthropic, OpenAI, Google), the caching discount is consistently 90%. Use the Claude Sonnet 4.6 example: instead of burning 30 cents per message to re-read files, prompt caching drops it to 3 cents per message.
+    </div>
+</section>
+<!-- END SLIDE: 06b-caching-pricing.html -->
+
+
+<!-- START SLIDE: 06c-caching-dynamics.html -->
+<section class="slide" id="slide-06c-caching-dynamics" data-transition="slide-horizontal">
+    <div class="slide-content slide-layout-split">
+        <div class="column-left">
+            <span class="section-label">Cache Dynamics</span>
+            <h2>Managing Cache <span class="gradient-text">TTL & Structure</span></h2>
+            
+            <div class="showcase-card glass-panel" style="padding: 1.25rem; margin-top: 1rem; border-color: rgba(251, 146, 60, 0.3); background: rgba(251, 146, 60, 0.03);">
+                <h3 style="font-size: 1.2rem; color: var(--code-attr); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span>⏱️</span> The 5-Minute Rule
+                </h3>
+                <p style="font-size: 0.95rem; line-height: 1.4; margin-bottom: 0.5rem;">
+                    Caches persist using a sliding <strong>5-to-10 minute TTL</strong> window:
+                </p>
+                <ul style="font-size: 0.85rem; padding-left: 1.2rem; line-height: 1.4; opacity: 0.9;">
+                    <li><strong>Hot Cache:</strong> Active agent turns maintain the 90% discount.</li>
+                    <li><strong>Cold Start:</strong> Idle sessions expire, requiring a full-price re-warm.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="column-right">
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--accent-color); font-family: var(--font-heading);">
+                Avoiding Cache Busts
+            </h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+                <!-- Rule 1: Order -->
+                <div class="glass-panel" style="padding: 0.75rem 1rem; border-color: rgba(255, 255, 255, 0.1);">
+                    <h4 style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 0.15rem;">1. Prefix Match Ordering</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8; line-height: 1.3;">
+                        Caches match from the start. Put static system prompts and files first; put dynamic inputs (queries, timestamps) last.
+                    </p>
+                </div>
+        
+                <!-- Rule 2: Minimum Sizes -->
+                <div class="glass-panel" style="padding: 0.75rem 1rem; border-color: rgba(255, 255, 255, 0.1);">
+                    <h4 style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 0.15rem;">2. Size Thresholds</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8; line-height: 1.3;">
+                        Requires minimum prompt overhead to trigger caching (e.g., 1,024 tokens for Anthropic).
+                    </p>
+                </div>
+        
+                <!-- Rule 3: Deterministic tool outputs -->
+                <div class="glass-panel" style="padding: 0.75rem 1rem; border-color: rgba(255, 255, 255, 0.1);">
+                    <h4 style="font-size: 0.95rem; color: var(--text-color); margin-bottom: 0.15rem;">3. Deterministic Structure</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8; line-height: 1.3;">
+                        Keep tool output keys, logs, and files in a fixed order. Shuffling order breaks the cache.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="notes">
+            Explain the sliding TTL window (5-minute rule). Emphasize three cache bust triggers: prefix ordering mismatch, under-threshold size, and non-deterministic shuffles.
+        </div>
+    </div>
+</section>
+<!-- END SLIDE: 06c-caching-dynamics.html -->
+
+
 <!-- START SLIDE: 07-copilot-base.html -->
 <section class="slide" id="slide-07-copilot-base" data-transition="slide-horizontal">
     <div class="slide-content slide-layout-split">
